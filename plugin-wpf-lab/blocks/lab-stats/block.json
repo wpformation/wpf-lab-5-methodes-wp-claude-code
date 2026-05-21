@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 1,
+  "name": "wpf/lab-stats",
+  "title": "Lab — Stats bar (4 KPI)",
+  "description": "Bandeau noir 4 colonnes KPI. La 2e colonne est sur fond violet. Direction B Lab.",
+  "category": "widgets",
+  "icon": "chart-bar",
+  "keywords": ["lab", "stats", "kpi", "wpformation"],
+  "supports": {
+    "autoRegister": true,
+    "align": ["full"]
+  },
+  "attributes": {
+    "kpi1Value":  { "type": "string", "label": "KPI 1 — valeur", "default": "7", "autoGenerateControl": true },
+    "kpi1Label":  { "type": "string", "label": "KPI 1 — label", "default": "méthodes testées", "autoGenerateControl": true },
+    "kpi2Value":  { "type": "string", "label": "KPI 2 — valeur (violet)", "default": "10", "autoGenerateControl": true },
+    "kpi2Label":  { "type": "string", "label": "KPI 2 — label", "default": "sections par page", "autoGenerateControl": true },
+    "kpi3Value":  { "type": "string", "label": "KPI 3 — valeur", "default": "1", "autoGenerateControl": true },
+    "kpi3Label":  { "type": "string", "label": "KPI 3 — label", "default": "méthode privilégiée", "autoGenerateControl": true },
+    "kpi4Value":  { "type": "string", "label": "KPI 4 — valeur", "default": "0", "autoGenerateControl": true },
+    "kpi4Label":  { "type": "string", "label": "KPI 4 — label", "default": "dépendance payante", "autoGenerateControl": true }
+  },
+  "render": "file:./render.php",
+  "style": "wpf-lab-blocks-style"
+}

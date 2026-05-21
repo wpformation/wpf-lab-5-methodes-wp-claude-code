@@ -1,0 +1,540 @@
+/* ============================================================================
+   WOW M·07 — Couche d'effets CSS Direction B Lab pour la solution retenue.
+   Scope strict : body.page-id-262 (M·07) uniquement.
+   Palette : bone #EDECE7 / ink #0A0A0A / acid #D7FF3A / violet #6F4BFF
+   Principe : on enrichit le rendu du plugin wpf-lab sans toucher au markup PHP.
+   Respect : prefers-reduced-motion (toutes les animations désactivées).
+   ============================================================================ */
+
+/* ---------- 0. Tokens & base scopés M·07 ---------- */
+body.page-id-262 {
+  --m7-acid: #D7FF3A;
+  --m7-violet: #6F4BFF;
+  --m7-ink: #0A0A0A;
+  --m7-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --m7-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth scroll global page (sans dépasser sur la home Astra) */
+body.page-id-262 { scroll-behavior: smooth; }
+
+/* ============================================================================
+   1. HERO — Gradient acid animé sur highlight + glow titre + entrée fade-up
+   ============================================================================ */
+body.page-id-262 .wpf-lab-hero { overflow: hidden; }
+
+body.page-id-262 .wpf-lab-hero__title {
+  animation: m7-fade-up 0.9s var(--m7-smooth) 0.1s both;
+}
+body.page-id-262 .wpf-lab-hero__lead {
+  animation: m7-fade-up 0.9s var(--m7-smooth) 0.25s both;
+}
+body.page-id-262 .wpf-lab-hero__cta-row {
+  animation: m7-fade-up 0.9s var(--m7-smooth) 0.4s both;
+}
+body.page-id-262 .wpf-lab-hero__eyebrow {
+  animation: m7-fade-up 0.6s var(--m7-smooth) 0s both;
+}
+
+body.page-id-262 .wpf-lab-hero__title-hl {
+  background-image: linear-gradient(90deg,
+    var(--m7-acid) 0%, #E8FF5A 25%, var(--m7-acid) 50%, #B8E62A 75%, var(--m7-acid) 100%);
+  background-size: 300% 100%;
+  background-position: 0% 50%;
+  animation: m7-acid-shimmer 9s ease-in-out infinite;
+}
+
+/* Effet de signature en coin du hero — petit carré acid qui pulse doucement */
+body.page-id-262 .wpf-lab-hero::after {
+  content: "";
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 16px;
+  height: 16px;
+  background: var(--m7-acid);
+  box-shadow: 0 0 0 0 rgba(215, 255, 58, 0.7);
+  animation: m7-pulse-acid 2.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   2. BANNER STICKY — Shimmer acid traversant
+   ============================================================================ */
+body.page-id-262 .sec-method-banner {
+  position: relative;
+  overflow: hidden;
+}
+body.page-id-262 .sec-method-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(215, 255, 58, 0.12) 40%,
+    rgba(215, 255, 58, 0.4) 50%,
+    rgba(215, 255, 58, 0.12) 60%,
+    transparent 100%);
+  animation: m7-banner-shimmer 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ============================================================================
+   3. STATS — Entrée animée des KPI + ligne acid au hover
+   ============================================================================ */
+body.page-id-262 .wpf-lab-stats__cell {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.5s var(--m7-smooth), background 0.3s ease;
+}
+body.page-id-262 .wpf-lab-stats__cell::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 4px;
+  background: var(--m7-acid);
+  transition: width 0.6s var(--m7-spring);
+}
+body.page-id-262 .wpf-lab-stats__cell:hover::after { width: 100%; }
+body.page-id-262 .wpf-lab-stats__cell:not(.wpf-lab-stats__cell--violet):hover {
+  background: #1a1a1a;
+}
+
+body.page-id-262 .wpf-lab-stats__value {
+  transition: transform 0.4s var(--m7-spring), letter-spacing 0.4s ease;
+  display: inline-block;
+}
+body.page-id-262 .wpf-lab-stats__cell:hover .wpf-lab-stats__value {
+  transform: scale(1.06);
+  letter-spacing: -0.05em;
+}
+
+/* ============================================================================
+   4. PILLARS — Hover lift + scale + ombre violet + bande acid révélée
+   ============================================================================ */
+body.page-id-262 .wpf-lab-pillars__grid {
+  perspective: 1200px;
+}
+body.page-id-262 .wpf-lab-pillars__pillar {
+  position: relative;
+  transition:
+    transform 0.5s var(--m7-spring),
+    box-shadow 0.5s var(--m7-smooth),
+    z-index 0s linear 0.5s;
+  cursor: default;
+  z-index: 1;
+  will-change: transform;
+}
+body.page-id-262 .wpf-lab-pillars__pillar::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0;
+  background: var(--m7-acid);
+  transition: height 0.4s var(--m7-spring);
+  z-index: 0;
+  pointer-events: none;
+}
+body.page-id-262 .wpf-lab-pillars__pillar > * {
+  position: relative;
+  z-index: 1;
+}
+
+body.page-id-262 .wpf-lab-pillars__pillar:hover {
+  transform: translateY(-12px) scale(1.04);
+  box-shadow: 16px 16px 0 var(--m7-violet), 0 0 48px rgba(111, 75, 255, 0.18);
+  z-index: 2;
+  transition-delay: 0s;
+}
+body.page-id-262 .wpf-lab-pillars__pillar:hover::after { height: 8px; }
+
+body.page-id-262 .wpf-lab-pillars__pillar--violet:hover {
+  box-shadow: 16px 16px 0 var(--m7-acid), 0 0 48px rgba(215, 255, 58, 0.28);
+}
+body.page-id-262 .wpf-lab-pillars__pillar--violet:hover::after {
+  background: var(--m7-acid);
+}
+body.page-id-262 .wpf-lab-pillars__pillar--acid:hover {
+  box-shadow: 16px 16px 0 var(--m7-violet), 0 0 48px rgba(111, 75, 255, 0.32);
+}
+body.page-id-262 .wpf-lab-pillars__pillar--acid:hover::after {
+  background: var(--m7-violet);
+}
+
+body.page-id-262 .wpf-lab-pillars__pillar-name {
+  transition: transform 0.4s var(--m7-spring), color 0.3s ease;
+}
+body.page-id-262 .wpf-lab-pillars__pillar:hover .wpf-lab-pillars__pillar-name {
+  transform: translateX(4px);
+}
+
+body.page-id-262 .wpf-lab-pillars__pillar-weight {
+  transition: letter-spacing 0.4s var(--m7-smooth), color 0.3s ease;
+}
+body.page-id-262 .wpf-lab-pillars__pillar:hover .wpf-lab-pillars__pillar-weight {
+  letter-spacing: 0.24em;
+}
+
+/* ============================================================================
+   5. METHODS TABLE — Row hover + pulsation M·07 + ★ animée
+   ============================================================================ */
+body.page-id-262 .wpf-lab-methods__table {
+  overflow: hidden;
+  transition: box-shadow 0.4s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-methods__table:hover {
+  box-shadow: 12px 12px 0 var(--m7-violet);
+}
+
+body.page-id-262 .wpf-lab-methods__row {
+  position: relative;
+  transition:
+    transform 0.35s var(--m7-spring),
+    background 0.25s ease,
+    box-shadow 0.35s var(--m7-smooth);
+  cursor: default;
+}
+body.page-id-262 .wpf-lab-methods__row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: var(--m7-acid);
+  transition: width 0.35s var(--m7-spring);
+}
+body.page-id-262 .wpf-lab-methods__row:not(.wpf-lab-methods__row--featured):hover {
+  background: #FAFAF6;
+  transform: translateX(6px);
+  z-index: 2;
+}
+body.page-id-262 .wpf-lab-methods__row:not(.wpf-lab-methods__row--featured):hover::before {
+  width: 4px;
+}
+
+/* Ligne featured M·07 — halo acid pulsé permanent + couronne ★ */
+body.page-id-262 .wpf-lab-methods__row--featured {
+  position: relative;
+  z-index: 3;
+  animation: m7-row-pulse 3.6s ease-in-out infinite;
+}
+body.page-id-262 .wpf-lab-methods__row--featured::after {
+  content: "★";
+  position: absolute;
+  top: -14px;
+  right: 24px;
+  width: 36px;
+  height: 36px;
+  background: var(--m7-violet);
+  color: var(--m7-acid);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(111, 75, 255, 0.4);
+  animation: m7-star-spin 6s linear infinite;
+  z-index: 4;
+}
+body.page-id-262 .wpf-lab-methods__row--featured:hover {
+  transform: translateX(8px) scale(1.005);
+  animation-play-state: paused;
+}
+
+/* Score bar : animation de remplissage au scroll-in */
+body.page-id-262 .wpf-lab-methods__bar-fill {
+  transition: transform 0.5s var(--m7-smooth);
+  transform-origin: left;
+}
+body.page-id-262 .wpf-lab-methods__row:hover .wpf-lab-methods__bar-fill {
+  transform: scaleX(1.02);
+}
+
+/* Score number : compteur scale au hover */
+body.page-id-262 .wpf-lab-methods__score-num,
+body.page-id-262 .wpf-lab-methods__total-num {
+  transition: transform 0.3s var(--m7-spring), color 0.3s ease;
+}
+body.page-id-262 .wpf-lab-methods__row:hover .wpf-lab-methods__score-num,
+body.page-id-262 .wpf-lab-methods__row:hover .wpf-lab-methods__total-num {
+  transform: scale(1.12);
+}
+
+/* CTA → bouton inline qui prend vie au hover */
+body.page-id-262 .wpf-lab-methods__cta {
+  transition: all 0.3s var(--m7-spring);
+}
+body.page-id-262 .wpf-lab-methods__cta:hover {
+  background: var(--m7-ink);
+  color: var(--m7-acid);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--m7-violet);
+}
+body.page-id-262 .wpf-lab-methods__row--featured .wpf-lab-methods__cta:hover {
+  background: var(--m7-ink);
+  color: var(--m7-acid);
+  border-color: var(--m7-ink);
+}
+
+/* ============================================================================
+   6. WHY — Pull-quote glow + capture frame interactive + scores barres animées
+   ============================================================================ */
+body.page-id-262 .wpf-lab-why__pull {
+  position: relative;
+  transition: transform 0.5s var(--m7-spring), box-shadow 0.5s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-why__pull:hover {
+  transform: translateY(-4px);
+  box-shadow: -8px 8px 0 var(--m7-acid), 0 0 32px rgba(215, 255, 58, 0.15);
+}
+
+body.page-id-262 .wpf-lab-why__capture {
+  transition: transform 0.5s var(--m7-spring), box-shadow 0.5s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-why__capture:hover {
+  transform: rotate(-0.6deg) translateY(-4px);
+  box-shadow: 12px 12px 0 var(--m7-acid), -4px -4px 0 var(--m7-violet);
+}
+
+body.page-id-262 .wpf-lab-why__score-bar-fill {
+  position: relative;
+  overflow: hidden;
+}
+body.page-id-262 .wpf-lab-why__score-bar-fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%);
+  animation: m7-bar-sweep 3s ease-in-out infinite;
+}
+
+body.page-id-262 .wpf-lab-why__score:hover .wpf-lab-why__score-total {
+  letter-spacing: -0.02em;
+  transition: letter-spacing 0.4s ease;
+}
+
+/* ============================================================================
+   7. TEAM — Cards 3D lift + avatar rotate
+   ============================================================================ */
+body.page-id-262 .wpf-lab-team__grid { perspective: 1200px; }
+
+body.page-id-262 .wpf-lab-team__card {
+  transition:
+    transform 0.5s var(--m7-spring),
+    box-shadow 0.5s var(--m7-smooth);
+  cursor: default;
+  will-change: transform;
+}
+body.page-id-262 .wpf-lab-team__card:hover {
+  transform: translateY(-8px) rotate(-0.4deg);
+  box-shadow: 16px 16px 0 var(--m7-violet);
+  z-index: 2;
+}
+body.page-id-262 .wpf-lab-team__card--claude:hover {
+  box-shadow: 16px 16px 0 var(--m7-acid);
+}
+
+body.page-id-262 .wpf-lab-team__avatar {
+  transition: transform 0.6s var(--m7-spring), filter 0.4s ease;
+}
+body.page-id-262 .wpf-lab-team__card:hover .wpf-lab-team__avatar {
+  transform: scale(1.12) rotate(-6deg);
+  filter: saturate(1.3) brightness(1.05);
+}
+
+body.page-id-262 .wpf-lab-team__name {
+  transition: transform 0.4s var(--m7-spring);
+}
+body.page-id-262 .wpf-lab-team__card:hover .wpf-lab-team__name {
+  transform: translateX(6px);
+}
+
+body.page-id-262 .wpf-lab-team__stats .val {
+  transition: transform 0.3s var(--m7-spring);
+  display: inline-block;
+}
+body.page-id-262 .wpf-lab-team__card:hover .wpf-lab-team__stats .val {
+  transform: scale(1.08);
+}
+
+/* ============================================================================
+   8. FEATURE 2 COL — Visuel code qui se soulève + pros/cons interactifs
+   ============================================================================ */
+body.page-id-262 .wpf-lab-feature__viz {
+  transition: transform 0.5s var(--m7-spring), box-shadow 0.5s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-feature__viz:hover {
+  transform: translate(-4px, -4px) rotate(-0.4deg);
+  box-shadow: 14px 14px 0 var(--m7-violet);
+}
+
+body.page-id-262 .wpf-lab-feature__pros,
+body.page-id-262 .wpf-lab-feature__cons {
+  transition:
+    transform 0.4s var(--m7-spring),
+    background 0.3s ease,
+    box-shadow 0.4s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-feature__pros:hover {
+  transform: translateY(-3px);
+  background: rgba(215, 255, 58, 0.32);
+  box-shadow: 6px 6px 0 var(--m7-ink);
+}
+body.page-id-262 .wpf-lab-feature__cons:hover {
+  transform: translateY(-3px);
+  background: rgba(111, 75, 255, 0.14);
+  box-shadow: 6px 6px 0 var(--m7-violet);
+}
+
+/* ============================================================================
+   9. CTA FINAL — Boutons magnetic + title acid pulsé subtil
+   ============================================================================ */
+body.page-id-262 .wpf-lab-cta__title-acid {
+  background: linear-gradient(90deg, var(--m7-acid), #E8FF5A, var(--m7-acid));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: m7-acid-text-shift 6s ease-in-out infinite;
+}
+
+body.page-id-262 .wpf-lab-cta .wpf-lab-btn--acid-on-ink {
+  transition:
+    transform 0.3s var(--m7-spring),
+    box-shadow 0.3s var(--m7-smooth);
+  position: relative;
+  overflow: hidden;
+}
+body.page-id-262 .wpf-lab-cta .wpf-lab-btn--acid-on-ink::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent);
+  transition: left 0.6s var(--m7-smooth);
+}
+body.page-id-262 .wpf-lab-cta .wpf-lab-btn--acid-on-ink:hover::before {
+  left: 150%;
+}
+body.page-id-262 .wpf-lab-cta .wpf-lab-btn--acid-on-ink:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 12px 12px 0 var(--m7-violet);
+}
+
+body.page-id-262 .wpf-lab-cta .wpf-lab-btn--ghost-light:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--m7-acid);
+}
+
+/* ============================================================================
+   10. KEYFRAMES — Toutes les animations centralisées
+   ============================================================================ */
+@keyframes m7-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes m7-acid-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes m7-pulse-acid {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(215, 255, 58, 0.7); }
+  50% { box-shadow: 0 0 0 12px rgba(215, 255, 58, 0); }
+}
+
+@keyframes m7-banner-shimmer {
+  0% { left: -100%; }
+  50%, 100% { left: 200%; }
+}
+
+@keyframes m7-row-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 0 0 rgba(215, 255, 58, 0.45),
+      inset 0 0 0 0 rgba(111, 75, 255, 0);
+  }
+  50% {
+    box-shadow:
+      0 0 0 6px rgba(215, 255, 58, 0),
+      inset 4px 0 0 0 var(--m7-violet);
+  }
+}
+
+@keyframes m7-star-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes m7-bar-sweep {
+  0% { transform: translateX(-100%); }
+  50%, 100% { transform: translateX(200%); }
+}
+
+@keyframes m7-acid-text-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ============================================================================
+   11. ACCESSIBILITÉ — Reduced motion
+   ============================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  body.page-id-262 *,
+  body.page-id-262 *::before,
+  body.page-id-262 *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  body.page-id-262 .wpf-lab-pillars__pillar:hover,
+  body.page-id-262 .wpf-lab-methods__row:hover,
+  body.page-id-262 .wpf-lab-team__card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================================
+   12. MOBILE — On allège (pas de hover lift sur touch, on garde les animations
+       d'entrée et la pulsation M·07 qui restent perçues comme signature)
+   ============================================================================ */
+@media (max-width: 768px) {
+  body.page-id-262 .wpf-lab-pillars__pillar:hover,
+  body.page-id-262 .wpf-lab-team__card:hover,
+  body.page-id-262 .wpf-lab-methods__row:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  body.page-id-262 .wpf-lab-hero::after {
+    width: 12px;
+    height: 12px;
+    top: 16px;
+    right: 16px;
+  }
+  body.page-id-262 .wpf-lab-methods__row--featured::after {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+    top: -10px;
+    right: 12px;
+  }
+}

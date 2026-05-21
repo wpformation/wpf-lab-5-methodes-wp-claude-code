@@ -1,0 +1,48 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 1,
+  "name": "wpf/lab-banner",
+  "title": "Lab — Banner page courante",
+  "description": "Banner indiquant la méthode courante de la page (M1-M7). Direction B Lab.",
+  "category": "widgets",
+  "icon": "flag",
+  "keywords": ["lab", "banner", "wpformation"],
+  "supports": {
+    "autoRegister": true,
+    "align": ["full"]
+  },
+  "attributes": {
+    "prefix": {
+      "type": "string",
+      "label": "Préfixe",
+      "default": "VOUS CONSULTEZ ·",
+      "autoGenerateControl": true
+    },
+    "methodNum": {
+      "type": "string",
+      "label": "Numéro méthode (badge acid)",
+      "default": "MÉTHODE 07",
+      "autoGenerateControl": true
+    },
+    "methodName": {
+      "type": "string",
+      "label": "Nom méthode",
+      "default": "Blocs PHP custom (WP 7.0 autoGenerateControl)",
+      "autoGenerateControl": true
+    },
+    "tag": {
+      "type": "string",
+      "label": "Tag droite",
+      "default": "100% PHP",
+      "autoGenerateControl": true
+    },
+    "isFeatured": {
+      "type": "boolean",
+      "label": "Variante featured (fond acid)",
+      "default": false,
+      "autoGenerateControl": true
+    }
+  },
+  "render": "file:./render.php",
+  "style": "wpf-lab-blocks-style"
+}

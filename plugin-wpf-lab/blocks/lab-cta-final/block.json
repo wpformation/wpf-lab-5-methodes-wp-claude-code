@@ -1,0 +1,86 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 1,
+  "name": "wpf/lab-cta-final",
+  "title": "Lab — CTA final",
+  "description": "CTA final Direction B Lab. Fond ink, titre bone avec accents acid + violet, 2 boutons.",
+  "category": "widgets",
+  "icon": "external",
+  "keywords": ["lab", "cta", "wpformation"],
+  "supports": {
+    "autoRegister": true,
+    "anchor": true,
+    "align": ["full"],
+    "spacing": { "margin": true, "padding": true }
+  },
+  "attributes": {
+    "eyebrowText": {
+      "type": "string",
+      "label": "Eyebrow",
+      "default": "SECTION 3/3 · VERDICT M7-A",
+      "autoGenerateControl": true
+    },
+    "titlePart1": {
+      "type": "string",
+      "label": "Titre — partie 1",
+      "default": "Blocs PHP custom —",
+      "autoGenerateControl": true
+    },
+    "titleAcid": {
+      "type": "string",
+      "label": "Mot accent acid",
+      "default": "design figé",
+      "autoGenerateControl": true
+    },
+    "titleSep": {
+      "type": "string",
+      "label": "Séparateur entre les 2 accents",
+      "default": "×",
+      "autoGenerateControl": true
+    },
+    "titleViolet": {
+      "type": "string",
+      "label": "Mot accent violet",
+      "default": "édition libre",
+      "autoGenerateControl": true
+    },
+    "titleEnd": {
+      "type": "string",
+      "label": "Fin de titre",
+      "default": ".",
+      "autoGenerateControl": true
+    },
+    "ctaPrimaryLabel": {
+      "type": "string",
+      "label": "CTA primaire — texte",
+      "default": "VOIR LE HUB",
+      "autoGenerateControl": true
+    },
+    "ctaPrimaryUrl": {
+      "type": "string",
+      "label": "CTA primaire — URL",
+      "default": "/",
+      "autoGenerateControl": true
+    },
+    "ctaGhostLabel": {
+      "type": "string",
+      "label": "CTA secondaire — texte",
+      "default": "RELIRE SECTION 2",
+      "autoGenerateControl": true
+    },
+    "ctaGhostUrl": {
+      "type": "string",
+      "label": "CTA secondaire — URL",
+      "default": "#sec2",
+      "autoGenerateControl": true
+    },
+    "metaLine": {
+      "type": "string",
+      "label": "Ligne meta du bas",
+      "default": "3 blocs PHP custom · 0 dépendance plugin tierce · 0 JS / 0 build · WP 6.9+ autoGenerateControl",
+      "autoGenerateControl": true
+    }
+  },
+  "render": "file:./render.php",
+  "style": "wpf-lab-blocks-style"
+}

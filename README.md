@@ -1,51 +1,110 @@
-# WPF Lab — 5 façons de créer une page WordPress avec Claude Code (mai 2026)
+# WPF Lab — Benchmark WordPress × Claude Code
 
-> Code source complet du lab WPFormation. 6 pages publiées sur [test.wpformation.com](https://test.wpformation.com/), 5 méthodes testées sur 4 piliers. Article complet : [wpformation.com/creer-page-wordpress-claude-code/](https://wpformation.com/creer-page-wordpress-claude-code/).
+> Repo de référence du **lab d'évaluation comparative** des 7 façons de créer une page WordPress en 2026, joué sur `test.wpformation.com` avec Claude Code.
 
-## Les 6 pages en ligne
-
-| Page | URL | ID WordPress |
-|---|---|---|
-| HUB éditoriale | https://test.wpformation.com/ | 225 |
-| Méthode 1 — Gutenberg natif pur | https://test.wpformation.com/accueil-gutenberg-natif/ | 131 |
-| **Méthode 2 — sweet spot Gutenberg + CSS** ★ | https://test.wpformation.com/methode-wpformation/ | 129 |
-| Méthode 3 — HTML monobloc | https://test.wpformation.com/methode-html-monobloc/ | 135 |
-| Méthode 4 — HTML multi-blocs | https://test.wpformation.com/methode-html-multiblocs/ | 137 |
-| Méthode 5 — Spectra Pro | https://test.wpformation.com/methode-spectra-pro/ | 133 |
-
-## Le code source (la méthode 2)
-
-| Fichier | Rôle |
-|---|---|
-| [`markup-methode-2.html`](./markup-methode-2.html) | Markup Gutenberg natif complet (513 blocs, 99,2 % natif). Importable tel quel dans un éditeur Gutenberg vierge. |
-| [`css-lab-methode-2.css`](./css-lab-methode-2.css) | CSS Lab page-level complet (113 Ko). Stocké dans la meta `_uag_custom_page_level_css` exposée par Spectra (gratuit). |
-| [`footer-lab-shared.css`](./footer-lab-shared.css) | Source unique pour en-tête, menu, bannière et pied de page communs aux 6 pages. |
-
-## Les scripts d'orchestration
-
-| Fichier | Rôle |
-|---|---|
-| [`fix-arrows.js`](./fix-arrows.js) | Convertit les flèches Unicode `↗` (U+2197) en `↗︎` (avec variation selector U+FE0E) pour éviter le rendu emoji bleu de Chromium. Idempotent. |
-| [`push-s4-octies-footers.js`](./push-s4-octies-footers.js) | Push master des 6 pages (markup + CSS meta) avec sleep 18 s entre POST et 12 nouvelles tentatives avec sleep 22 s sur HTTP 429 (limitation Tiger Protect O2switch). |
-| [`inject-style-into-m5.js`](./inject-style-into-m5.js) | Contournement obligatoire pour Spectra Pro qui ne génère pas le CSS frontend sur la M5. Ré-injecte le CSS partagé en inline dans le markup. |
-
-## Pré-requis
-
-- WordPress 6.5+ (ou 7.0+)
-- Un thème compatible Gutenberg (Astra gratuit testé)
-- **Spectra gratuit** (la version Pro n'est PAS nécessaire pour la méthode 2)
-- Un Application Password sur un compte admin
-- Claude Code installé (plan Anthropic Pro, Max ou Team)
-
-## Licence
-
-MIT. Forkez, modifiez, utilisez en production. Une mention de la source dans votre projet est appréciée mais pas obligatoire.
-
-## Auteur
-
-Fabrice Ducarme — [WPFormation](https://wpformation.com).
-14 ans WordPress, 8 plugins WP.org (2,1 M+ téléchargements cumulés), formation IA + WordPress certifiée Qualiopi.
+**Article complet** : <https://wpformation.com/creer-page-wordpress-claude-code/>
 
 ---
 
-Webinar live le 18 juin 2026 à 18 h 30 : je rejoue les 5 méthodes en direct, côte à côte, 1 h plus questions-réponses. [Inscription gratuite](https://wpformation.com/creer-page-wordpress-claude-code/#webinar).
+## De 5 à 7 méthodes — historique du repo
+
+Ce repo a démarré en **mai 2026, session S4**, avec 5 méthodes testées et **M·02 (Gutenberg + CSS personnalisé via Spectra)** déclaré gagnant.
+
+En **session S6 (21 mai 2026)**, deux nouvelles méthodes ont été ajoutées :
+
+- **M·06** — Gutenberg pur + CSS embarqué dans un seul bloc `core/html` (zéro plugin)
+- **M·07** — Blocs PHP custom via plugin `wpf-lab` et pattern `autoGenerateControl` WP 7.0 (zéro JS, zéro build)
+
+**Le vainqueur a changé** : **M·07 — 30/30 brut, 37,5/37,5 pondéré**. M·02 reste cité comme **la voie historique** (importante pour les sites legacy), mais surpassée pour toute refonte 2026.
+
+---
+
+## Les 7 méthodes en compétition
+
+| # | Méthode | Score | Démo live |
+|---|---|---|---|
+| **★1** | **M·07 — Blocs PHP custom (autoGenerateControl)** | **30/30** | <https://test.wpformation.com/methode-blocs-php-custom/> |
+| 2 | M·06 — Gutenberg pur + CSS dans core/html | 26/30 | <https://test.wpformation.com/methode-gutenberg-pur/> |
+| 3 | M·02 — Gutenberg + CSS perso (voie historique) | 24/30 | <https://test.wpformation.com/methode-wpformation/> |
+| 4 | M·01 — Gutenberg natif (baseline) | 25/30 | <https://test.wpformation.com/accueil-gutenberg-natif/> |
+| 5 | M·04 — HTML multi-blocs | 22/30 | <https://test.wpformation.com/methode-html-multiblocs/> |
+| 6 | M·05 — Spectra Pro | 20/30 | <https://test.wpformation.com/methode-spectra-pro/> |
+| 6 | M·03 — HTML monobloc | 19/30 | <https://test.wpformation.com/methode-html-monobloc/> |
+
+HUB : <https://test.wpformation.com/>
+
+---
+
+## Structure du repo
+
+```
+.
+├── README.md
+├── plugin-wpf-lab/           ← Le plugin M·07 (11 blocs PHP custom, GPL-2.0+)
+├── docs-s6/                  ← Matrice 7 méthodes, note rédacteur, recap S6
+├── pages-v3-s6/              ← Markups Gutenberg des 7 pages
+├── scripts-s6/               ← Scripts de déploiement + footers + wow CSS
+├── captures-s6/              ← Captures clés desktop M1-M7 + zooms M·07 wow
+└── (artefacts S4 historiques : css-lab-methode-2.css, markup-methode-2.html…)
+```
+
+---
+
+## Le plugin wpf-lab en bref
+
+11 blocs Gutenberg PHP custom, **zéro JavaScript**, grâce à WordPress 7.0 + pattern `autoGenerateControl`. Doc complète : [plugin-wpf-lab/README.md](plugin-wpf-lab/README.md).
+
+**Usage minimal** :
+
+```html
+<!-- wp:wpf/lab-utility /-->
+<!-- wp:wpf/lab-localnav /-->
+<!-- wp:wpf/lab-banner /-->
+<!-- wp:wpf/lab-hero /-->
+<!-- wp:wpf/lab-stats /-->
+<!-- wp:wpf/lab-why /-->
+<!-- wp:wpf/lab-pillars /-->
+<!-- wp:wpf/lab-feature-twocol /-->
+<!-- wp:wpf/lab-methods-table /-->
+<!-- wp:wpf/lab-team /-->
+<!-- wp:wpf/lab-cta-final /-->
+```
+
+11 lignes, ~3 KB. Tout le design est dans le plugin (versionné Git).
+
+---
+
+## Stack technique
+
+- **WordPress** 7.0+ (pour `autoGenerateControl`)
+- **Thème** Astra (free)
+- **Plugin Spectra** (free) — requis pour M·02 et M·04 (CSS page-level via meta)
+- **Plugin Spectra Pro** — requis pour M·05
+- **Plugin wpf-lab** (ce repo, dossier `plugin-wpf-lab/`) — requis pour M·07
+- **Hébergeur** o2switch (rate-limit Tiger Protect → sleep 18s + retry 22s × 12 sur 429)
+
+---
+
+## Licence
+
+- **Plugin `wpf-lab`** : GPL-2.0-or-later (voir [plugin-wpf-lab/LICENSE](plugin-wpf-lab/LICENSE))
+- **Reste du repo** (docs, scripts, captures) : MIT (héritage S4)
+
+---
+
+## Liens
+
+- **Article WPFormation** : <https://wpformation.com/creer-page-wordpress-claude-code/>
+- **Site de démo** : <https://test.wpformation.com>
+- **Plugin** : [plugin-wpf-lab/](plugin-wpf-lab/)
+- **Matrice de scoring 7 méthodes** : [docs-s6/matrice-finale-7-methodes-2026-05-21-S6.md](docs-s6/matrice-finale-7-methodes-2026-05-21-S6.md)
+- **Note pour le rédacteur** : [docs-s6/note-pour-redacteur-wpformation-S6-FINALE.md](docs-s6/note-pour-redacteur-wpformation-S6-FINALE.md)
+- **Recap session S6** : [docs-s6/session-6-recap-2026-05-21.md](docs-s6/session-6-recap-2026-05-21.md)
+
+---
+
+## Crédits
+
+- **Conception, benchmark, design Direction B** : Fabrice Ducarme — [WPFormation](https://wpformation.com)
+- **Co-développement** : Claude Code (Anthropic Opus 4.7)
+- **Pattern `autoGenerateControl`** : équipe Core AI WordPress (livré en WP 7.0, janvier 2026)

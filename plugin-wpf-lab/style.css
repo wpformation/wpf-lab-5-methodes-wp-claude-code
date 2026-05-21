@@ -1,0 +1,1157 @@
+/* ============================================================================
+   WPF Lab Blocks — Design Direction B Lab partagé pour les 3 blocs custom.
+   Palette : bone #EDECE7 / ink #0A0A0A / acid #D7FF3A / violet #6F4BFF
+   Typo    : Space Grotesk 700 + JetBrains Mono 500
+   Scope   : sélecteurs préfixés .wpf-lab-* — pas de leak hors plugin
+   ============================================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+/* ---------- Tokens (CSS custom properties scoped on blocks) ---------- */
+.wpf-lab-hero,
+.wpf-lab-feature,
+.wpf-lab-cta {
+  --b-bg: #EDECE7;
+  --b-paper: #FFFFFF;
+  --b-ink: #0A0A0A;
+  --b-ink-2: #2A2A2A;
+  --b-ink-3: #6E6E6E;
+  --b-acid: #D7FF3A;
+  --b-violet: #6F4BFF;
+}
+
+.wpf-lab-hero,
+.wpf-lab-feature,
+.wpf-lab-cta {
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  color: var(--b-ink);
+  box-sizing: border-box;
+}
+
+.wpf-lab-hero *,
+.wpf-lab-feature *,
+.wpf-lab-cta * {
+  box-sizing: border-box;
+}
+
+/* ---------- BLOC 1 : HERO ---------- */
+.wpf-lab-hero {
+  background: var(--b-bg);
+  padding: 80px 48px;
+  position: relative;
+}
+
+.wpf-lab-hero__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin: 0 0 24px;
+  border-top: 1px solid var(--b-ink);
+  border-bottom: 1px solid var(--b-ink);
+  padding: 8px 0;
+  display: inline-block;
+  padding-right: 32px;
+}
+
+.wpf-lab-hero__eyebrow-tag {
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 2px 8px;
+  margin-right: 12px;
+  font-weight: 500;
+}
+
+.wpf-lab-hero__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 88px;
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin: 0 0 24px;
+  max-width: 1000px;
+  color: var(--b-ink);
+}
+
+.wpf-lab-hero__title-hl {
+  background: var(--b-acid);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 8px;
+}
+
+.wpf-lab-hero__lead {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  max-width: 680px;
+  margin: 0 0 40px;
+}
+
+.wpf-lab-hero__cta-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.wpf-lab-hero__meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--b-ink-3);
+  margin-top: 48px;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+  padding-top: 16px;
+}
+
+/* ---------- BLOC 2 : FEATURE 2 COLONNES ---------- */
+.wpf-lab-feature {
+  background: var(--b-paper);
+  padding: 96px 48px;
+  border-top: 2px solid var(--b-ink);
+  border-bottom: 2px solid var(--b-ink);
+}
+
+.wpf-lab-feature__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 32px;
+  font-weight: 500;
+}
+
+.wpf-lab-feature__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 64px;
+  align-items: start;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.wpf-lab-feature__viz {
+  background: var(--b-bg);
+  border: 2px solid var(--b-ink);
+  padding: 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: var(--b-ink);
+  box-shadow: 8px 8px 0 var(--b-violet);
+}
+
+.wpf-lab-feature__viz-comment { color: var(--b-ink-3); }
+.wpf-lab-feature__viz-key     { color: var(--b-violet); font-weight: 500; }
+.wpf-lab-feature__viz-val     { color: var(--b-ink); }
+
+.wpf-lab-feature__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0 0 32px;
+  color: var(--b-ink);
+}
+
+.wpf-lab-feature__title-hl {
+  background: var(--b-acid);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 6px;
+}
+
+.wpf-lab-feature__body p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--b-ink-2);
+  margin: 0 0 16px;
+  max-width: 560px;
+}
+
+.wpf-lab-feature__body strong {
+  color: var(--b-ink);
+  font-weight: 600;
+}
+
+.wpf-lab-feature__proscons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.wpf-lab-feature__pros,
+.wpf-lab-feature__cons {
+  border: 1px solid var(--b-ink);
+  padding: 20px;
+}
+
+.wpf-lab-feature__pros { background: rgba(215, 255, 58, 0.18); }
+.wpf-lab-feature__cons { background: rgba(111, 75, 255, 0.08); }
+
+.wpf-lab-feature__pros h4,
+.wpf-lab-feature__cons h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0 0 12px;
+  font-weight: 500;
+  color: var(--b-ink);
+}
+
+.wpf-lab-feature__pros ul,
+.wpf-lab-feature__cons ul {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  padding-left: 18px;
+  color: var(--b-ink-2);
+}
+
+/* ---------- BLOC 3 : CTA FINAL ---------- */
+.wpf-lab-cta {
+  background: var(--b-ink);
+  padding: 96px 48px;
+  color: var(--b-bg);
+  text-align: center;
+}
+
+.wpf-lab-cta__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-acid);
+  margin: 0 0 32px;
+  font-weight: 500;
+}
+
+.wpf-lab-cta__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0 auto 48px;
+  max-width: 900px;
+  color: var(--b-bg);
+}
+
+.wpf-lab-cta__title-acid   { color: var(--b-acid); }
+.wpf-lab-cta__title-violet { color: var(--b-violet); }
+.wpf-lab-cta__title-sep    { color: var(--b-violet); margin: 0 8px; }
+
+.wpf-lab-cta__row {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.wpf-lab-cta__meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--b-ink-3);
+  margin: 56px auto 0;
+  border-top: 1px solid rgba(237, 236, 231, 0.18);
+  padding-top: 16px;
+  max-width: 700px;
+}
+
+/* ---------- BOUTONS COMMUNS ---------- */
+.wpf-lab-btn {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 18px 28px;
+  border: 2px solid var(--b-ink);
+  text-decoration: none;
+  border-radius: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.wpf-lab-btn--acid {
+  background: var(--b-acid);
+  color: var(--b-ink);
+  box-shadow: 6px 6px 0 var(--b-ink);
+}
+.wpf-lab-btn--acid:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--b-ink);
+}
+
+.wpf-lab-btn--ghost {
+  background: transparent;
+  color: var(--b-ink);
+}
+.wpf-lab-btn--ghost:hover {
+  background: var(--b-ink);
+  color: var(--b-bg);
+}
+
+.wpf-lab-btn--acid-on-ink {
+  background: var(--b-acid);
+  color: var(--b-ink);
+  border-color: var(--b-acid);
+  box-shadow: 6px 6px 0 var(--b-violet);
+  padding: 20px 32px;
+}
+.wpf-lab-btn--acid-on-ink:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--b-violet);
+}
+
+.wpf-lab-btn--ghost-light {
+  background: transparent;
+  color: var(--b-bg);
+  border-color: var(--b-bg);
+  padding: 20px 32px;
+}
+.wpf-lab-btn--ghost-light:hover {
+  background: var(--b-bg);
+  color: var(--b-ink);
+}
+
+/* ============================================================================
+   S6 EXTENSION — Nouveaux blocs Direction B Lab (utility, localnav, banner,
+   stats, why, pillars, methods-table, team). Pattern : sélecteurs préfixés
+   .wpf-lab-XXX, partage des tokens via :root.
+   ============================================================================ */
+
+/* Hérite tokens et fontes via cascade (Hero/Feature/CTA déjà importés en tête). */
+.wpf-lab-utility,
+.wpf-lab-localnav,
+.wpf-lab-banner,
+.wpf-lab-stats,
+.wpf-lab-why,
+.wpf-lab-pillars,
+.wpf-lab-methods,
+.wpf-lab-team {
+  --b-bg: #EDECE7;
+  --b-paper: #FFFFFF;
+  --b-ink: #0A0A0A;
+  --b-ink-2: #2A2A2A;
+  --b-ink-3: #6E6E6E;
+  --b-acid: #D7FF3A;
+  --b-violet: #6F4BFF;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  color: var(--b-ink);
+  box-sizing: border-box;
+}
+.wpf-lab-utility *, .wpf-lab-localnav *, .wpf-lab-banner *,
+.wpf-lab-stats *, .wpf-lab-why *, .wpf-lab-pillars *,
+.wpf-lab-methods *, .wpf-lab-team * { box-sizing: border-box; }
+
+/* ---------- SEC-UTILITY ---------- */
+.wpf-lab-utility {
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 12px 32px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+.wpf-lab-utility__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.wpf-lab-utility__group {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.wpf-lab-utility__brand {
+  background: var(--b-acid);
+  color: var(--b-ink);
+  padding: 4px 10px;
+  font-weight: 700;
+}
+.wpf-lab-utility__item { color: rgba(237, 236, 231, 0.85); }
+
+/* ---------- SEC-LOCALNAV ---------- */
+.wpf-lab-localnav {
+  background: var(--b-bg);
+  border-bottom: 1px dashed rgba(10, 10, 10, 0.4);
+  padding: 16px 32px;
+}
+.wpf-lab-localnav__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.wpf-lab-localnav__brand {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.wpf-lab-localnav__brand-sep,
+.wpf-lab-localnav__brand-lab {
+  color: var(--b-violet);
+  font-style: italic;
+}
+.wpf-lab-localnav__links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink-2);
+}
+.wpf-lab-localnav__cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--b-ink);
+  text-decoration: none;
+  background: var(--b-acid);
+  padding: 8px 16px;
+  font-weight: 700;
+}
+
+/* ---------- SEC-BANNER ---------- */
+/* Sélecteurs .sec-method-banner partagés avec le footer-lab-shared.css → harmonie M1-M5/M6/M7. */
+.wpf-lab-banner { /* shell — design via .sec-method-banner du footer-lab-shared */ }
+
+/* ---------- SEC-STATS ---------- */
+.wpf-lab-stats {
+  background: var(--b-ink);
+  padding: 0;
+}
+.wpf-lab-stats__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.wpf-lab-stats__cell {
+  padding: 48px 32px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--b-bg);
+}
+.wpf-lab-stats__cell:last-child { border-right: 0; }
+.wpf-lab-stats__cell--violet {
+  background: var(--b-violet);
+  color: var(--b-bg);
+}
+.wpf-lab-stats__kpi {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0 0 16px;
+}
+.wpf-lab-stats__cell--violet .wpf-lab-stats__kpi { color: var(--b-bg); }
+.wpf-lab-stats__value {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 96px;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin: 0 0 20px;
+  color: var(--b-bg);
+}
+.wpf-lab-stats__cell--violet .wpf-lab-stats__value { color: var(--b-acid); }
+.wpf-lab-stats__label {
+  font-size: 14px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+.wpf-lab-stats__cell--violet .wpf-lab-stats__label { color: var(--b-bg); }
+
+/* ---------- SEC-WHY ---------- */
+.wpf-lab-why {
+  background: var(--b-bg);
+  padding: 112px 48px;
+}
+.wpf-lab-why__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.wpf-lab-why__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 32px;
+  font-weight: 500;
+}
+.wpf-lab-why__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin: 0 0 32px;
+}
+.wpf-lab-why__op { color: var(--b-violet); }
+.wpf-lab-why__hl {
+  background: var(--b-acid);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 6px;
+}
+.wpf-lab-why__body {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--b-ink-2);
+  margin: 0 0 32px;
+}
+.wpf-lab-why__pull {
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 28px;
+  border: 2px solid var(--b-ink);
+}
+.wpf-lab-why__pull-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-acid);
+  margin: 0 0 12px;
+  font-weight: 700;
+}
+.wpf-lab-why__pull-quote {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+.wpf-lab-why__pull-author {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(237, 236, 231, 0.65);
+  margin: 0;
+}
+.wpf-lab-why__fig-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin-bottom: 8px;
+}
+.wpf-lab-why__fig-title { color: var(--b-ink); }
+.wpf-lab-why__capture {
+  position: relative;
+  background: var(--b-paper);
+  border: 2px solid var(--b-violet);
+  box-shadow: 8px 8px 0 var(--b-acid);
+  padding: 24px;
+}
+.wpf-lab-why__ruler-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  color: var(--b-ink-3);
+  padding-bottom: 8px;
+  border-bottom: 1px dashed rgba(10, 10, 10, 0.3);
+  margin-bottom: 12px;
+}
+.wpf-lab-why__capture-frame {
+  background: var(--b-bg);
+  border: 1.5px dashed var(--b-violet);
+  padding: 16px;
+  min-height: 180px;
+  position: relative;
+  margin-bottom: 16px;
+}
+.wpf-lab-why__frame-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--b-ink-3);
+  margin: 0 0 8px;
+}
+.wpf-lab-why__frame-overlay {
+  background: rgba(111, 75, 255, 0.12);
+  border: 1px solid var(--b-violet);
+  padding: 8px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  color: var(--b-violet);
+  margin-top: 24px;
+}
+.wpf-lab-why__score {
+  background: var(--b-ink);
+  color: var(--b-bg);
+  padding: 18px;
+}
+.wpf-lab-why__score-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+.wpf-lab-why__score-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-acid);
+  margin: 0;
+}
+.wpf-lab-why__score-total {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--b-acid);
+  margin: 0;
+}
+.wpf-lab-why__score-total .max { font-size: 12px; color: rgba(255, 255, 255, 0.5); margin-left: 6px; }
+.wpf-lab-why__score-row {
+  display: grid;
+  grid-template-columns: 130px 1fr 36px;
+  gap: 12px;
+  align-items: center;
+  margin-top: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.65);
+}
+.wpf-lab-why__score-bar {
+  position: relative;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.wpf-lab-why__score-bar-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--b-acid);
+}
+.wpf-lab-why__score-row .val { color: var(--b-acid); text-align: right; }
+.wpf-lab-why__footnote {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px dashed rgba(10, 10, 10, 0.4);
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  gap: 24px;
+}
+.wpf-lab-why__note-key { color: var(--b-violet); font-weight: 700; }
+
+/* ---------- SEC-PILLARS ---------- */
+.wpf-lab-pillars {
+  background: var(--b-bg);
+  padding: 112px 48px;
+}
+.wpf-lab-pillars__head {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 64px;
+  align-items: end;
+  margin-bottom: 56px;
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.wpf-lab-pillars__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 12px;
+}
+.wpf-lab-pillars__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.wpf-lab-pillars__lead {
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--b-ink-2);
+  margin: 0;
+}
+.wpf-lab-pillars__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 2px solid var(--b-ink);
+  border-left: 2px solid var(--b-ink);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.wpf-lab-pillars__pillar {
+  padding: 32px;
+  border-right: 2px solid var(--b-ink);
+  border-bottom: 2px solid var(--b-ink);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+}
+.wpf-lab-pillars__pillar--acid   { background: var(--b-acid); }
+.wpf-lab-pillars__pillar--paper  { background: var(--b-paper); }
+.wpf-lab-pillars__pillar--violet { background: var(--b-violet); color: var(--b-bg); }
+.wpf-lab-pillars__pillar-head {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin-bottom: 24px;
+}
+.wpf-lab-pillars__pillar--violet .wpf-lab-pillars__pillar-head { color: rgba(255, 255, 255, 0.65); }
+.wpf-lab-pillars__pillar-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px;
+}
+.wpf-lab-pillars__pillar-body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--b-ink-2);
+  margin: 0 0 auto;
+}
+.wpf-lab-pillars__pillar--violet .wpf-lab-pillars__pillar-body { color: rgba(255, 255, 255, 0.9); }
+.wpf-lab-pillars__pillar-weight {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin: 24px 0 0;
+}
+.wpf-lab-pillars__pillar--violet .wpf-lab-pillars__pillar-weight { color: rgba(255, 255, 255, 0.7); }
+
+/* ---------- SEC-METHODS (table 7 lignes) ---------- */
+.wpf-lab-methods {
+  background: var(--b-bg);
+  padding: 112px 48px;
+}
+.wpf-lab-methods__head { margin-bottom: 56px; max-width: 1440px; margin-left: auto; margin-right: auto; }
+.wpf-lab-methods__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 16px;
+}
+.wpf-lab-methods__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 72px;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+}
+.wpf-lab-methods__op-violet { color: var(--b-violet); }
+.wpf-lab-methods__hl {
+  background: var(--b-acid);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 8px;
+}
+.wpf-lab-methods__table {
+  border: 2px solid var(--b-ink);
+  background: var(--b-paper);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.wpf-lab-methods__head-row,
+.wpf-lab-methods__row {
+  display: grid;
+  grid-template-columns: 60px 2.2fr repeat(4, 1fr) 1.2fr;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.15);
+}
+.wpf-lab-methods__head-row { background: var(--b-ink); color: var(--b-bg); }
+.wpf-lab-methods__head-row > div {
+  padding: 14px 12px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(237, 236, 231, 0.8);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+.wpf-lab-methods__head-row > div:last-child { border-right: 0; }
+.wpf-lab-methods__row {
+  align-items: stretch;
+}
+.wpf-lab-methods__row:last-child { border-bottom: 0; }
+.wpf-lab-methods__row--featured { background: var(--b-acid); }
+.wpf-lab-methods__n {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--b-ink-3);
+  padding: 24px 18px;
+  margin: 0;
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__n { color: var(--b-ink); }
+.wpf-lab-methods__meta {
+  padding: 20px 18px;
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+}
+.wpf-lab-methods__name-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+.wpf-lab-methods__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.wpf-lab-methods__pill {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  background: var(--b-ink);
+  color: var(--b-acid);
+  padding: 3px 7px;
+  font-weight: 700;
+  margin: 0;
+}
+.wpf-lab-methods__tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 8px;
+}
+.wpf-lab-methods__blurb {
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--b-ink-2);
+  margin: 0 0 6px;
+}
+.wpf-lab-methods__verdict {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--b-ink-3);
+  margin: 0;
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__verdict { color: var(--b-ink); }
+.wpf-lab-methods__score {
+  padding: 16px 14px;
+  border-right: 1px solid rgba(10, 10, 10, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.wpf-lab-methods__score-num-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 6px;
+}
+.wpf-lab-methods__score-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.wpf-lab-methods__score-max {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--b-ink-3);
+  margin: 0;
+}
+.wpf-lab-methods__bar {
+  height: 6px;
+  background: rgba(10, 10, 10, 0.1);
+}
+.wpf-lab-methods__bar-fill {
+  height: 100%;
+  background: var(--b-violet);
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__bar { background: rgba(10, 10, 10, 0.18); }
+.wpf-lab-methods__row--featured .wpf-lab-methods__bar-fill { background: var(--b-ink); }
+.wpf-lab-methods__total {
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__total {
+  background: var(--b-ink);
+  color: var(--b-acid);
+}
+.wpf-lab-methods__total-num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 32px;
+  margin: 0;
+}
+.wpf-lab-methods__total-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin: 4px 0 12px;
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__total-label { color: rgba(255, 255, 255, 0.6); }
+.wpf-lab-methods__cta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--b-ink);
+  background: transparent;
+  border: 1px solid var(--b-ink);
+  padding: 6px 10px;
+  text-decoration: none;
+  font-weight: 700;
+}
+.wpf-lab-methods__row--featured .wpf-lab-methods__cta {
+  background: var(--b-acid);
+  border-color: var(--b-acid);
+  color: var(--b-ink);
+}
+.wpf-lab-methods__footer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 24px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  flex-wrap: wrap;
+  gap: 16px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* ---------- SEC-TEAM ---------- */
+.wpf-lab-team {
+  background: var(--b-bg);
+  padding: 112px 48px;
+}
+.wpf-lab-team__head { margin-bottom: 48px; max-width: 1440px; margin-left: auto; margin-right: auto; }
+.wpf-lab-team__eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-violet);
+  margin: 0 0 16px;
+}
+.wpf-lab-team__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+.wpf-lab-team__hl {
+  background: var(--b-acid);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 8px;
+}
+.wpf-lab-team__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 2px solid var(--b-ink);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.wpf-lab-team__card {
+  padding: 32px;
+  background: var(--b-paper);
+  border-right: 2px solid var(--b-ink);
+  display: flex;
+  flex-direction: column;
+}
+.wpf-lab-team__card:last-child { border-right: 0; }
+.wpf-lab-team__card--claude {
+  background: var(--b-ink);
+  color: var(--b-bg);
+}
+.wpf-lab-team__head-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin-bottom: 24px;
+}
+.wpf-lab-team__card--claude .wpf-lab-team__head-row { color: rgba(255, 255, 255, 0.5); }
+.wpf-lab-team__badge { color: var(--b-violet); font-weight: 700; }
+.wpf-lab-team__card--claude .wpf-lab-team__badge { color: var(--b-acid); }
+.wpf-lab-team__id {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.wpf-lab-team__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+.wpf-lab-team__avatar--hue12  { background: radial-gradient(circle at 30% 30%, #FF7A4A 0%, #B83B12 70%); }
+.wpf-lab-team__avatar--hue320 { background: radial-gradient(circle at 30% 30%, #FF7AC8 0%, #9B2876 70%); }
+.wpf-lab-team__avatar--hue260 { background: radial-gradient(circle at 30% 30%, #9F87FF 0%, #4221B0 70%); }
+.wpf-lab-team__name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin: 0 0 4px;
+}
+.wpf-lab-team__card--claude .wpf-lab-team__name { color: var(--b-bg); }
+.wpf-lab-team__role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin: 0;
+}
+.wpf-lab-team__card--claude .wpf-lab-team__role { color: rgba(255, 255, 255, 0.6); }
+.wpf-lab-team__bio {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--b-ink-2);
+  margin: 0 0 auto;
+}
+.wpf-lab-team__card--claude .wpf-lab-team__bio { color: rgba(255, 255, 255, 0.85); }
+.wpf-lab-team__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(10, 10, 10, 0.12);
+}
+.wpf-lab-team__card--claude .wpf-lab-team__stats { border-top-color: rgba(255, 255, 255, 0.15); }
+.wpf-lab-team__stats .label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--b-ink-3);
+  margin: 0 0 4px;
+}
+.wpf-lab-team__stats .val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--b-violet);
+  margin: 0;
+}
+.wpf-lab-team__card--claude .wpf-lab-team__stats .val { color: var(--b-acid); }
+.wpf-lab-team__stats .val.role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: lowercase;
+  letter-spacing: 0.05em;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .wpf-lab-hero { padding: 48px 24px; }
+  .wpf-lab-hero__title { font-size: 48px; }
+  .wpf-lab-hero__lead { font-size: 16px; }
+
+  .wpf-lab-feature { padding: 48px 24px; }
+  .wpf-lab-feature__grid { grid-template-columns: 1fr; gap: 40px; }
+  .wpf-lab-feature__title { font-size: 36px; }
+  .wpf-lab-feature__proscons { grid-template-columns: 1fr; }
+
+  .wpf-lab-cta { padding: 64px 24px; }
+  .wpf-lab-cta__title { font-size: 40px; }
+
+  .wpf-lab-utility { padding: 12px 16px; font-size: 9.5px; }
+  .wpf-lab-localnav { padding: 14px 16px; }
+  .wpf-lab-localnav__brand { font-size: 20px; }
+
+  .wpf-lab-stats { }
+  .wpf-lab-stats__grid { grid-template-columns: repeat(2, 1fr); }
+  .wpf-lab-stats__cell { padding: 32px 20px; }
+  .wpf-lab-stats__value { font-size: 64px; }
+
+  .wpf-lab-why { padding: 64px 24px; }
+  .wpf-lab-why__grid { grid-template-columns: 1fr; gap: 40px; }
+  .wpf-lab-why__title { font-size: 40px; }
+  .wpf-lab-why__footnote { flex-direction: column; }
+
+  .wpf-lab-pillars { padding: 64px 24px; }
+  .wpf-lab-pillars__head { grid-template-columns: 1fr; gap: 24px; }
+  .wpf-lab-pillars__title { font-size: 44px; }
+  .wpf-lab-pillars__grid { grid-template-columns: 1fr 1fr; }
+
+  .wpf-lab-methods { padding: 64px 24px; }
+  .wpf-lab-methods__title { font-size: 44px; }
+  .wpf-lab-methods__head-row,
+  .wpf-lab-methods__row {
+    grid-template-columns: 50px 1fr;
+    row-gap: 4px;
+  }
+  .wpf-lab-methods__head-row > div:nth-child(n+3),
+  .wpf-lab-methods__row .wpf-lab-methods__score,
+  .wpf-lab-methods__row .wpf-lab-methods__total { display: none; }
+  .wpf-lab-methods__head-row > div:nth-child(1),
+  .wpf-lab-methods__head-row > div:nth-child(2) { padding: 10px 12px; }
+
+  .wpf-lab-team { padding: 64px 24px; }
+  .wpf-lab-team__title { font-size: 44px; }
+  .wpf-lab-team__grid { grid-template-columns: 1fr; }
+  .wpf-lab-team__card { border-right: 0; border-bottom: 2px solid var(--b-ink); }
+  .wpf-lab-team__card:last-child { border-bottom: 0; }
+}
