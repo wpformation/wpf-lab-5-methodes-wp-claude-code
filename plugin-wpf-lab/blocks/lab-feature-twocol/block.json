@@ -6,79 +6,77 @@
   "description": "Feature 2 colonnes Direction B Lab. Viz monospace à gauche, titre + texte + pros/cons à droite.",
   "category": "widgets",
   "icon": "columns",
-  "keywords": ["lab", "feature", "wpformation"],
+  "keywords": [
+    "lab",
+    "feature",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
     "anchor": true,
-    "align": ["full"],
-    "spacing": { "margin": true, "padding": true }
+    "align": [
+      "full"
+    ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
     "eyebrowText": {
       "type": "string",
       "label": "Eyebrow",
-      "default": "SECTION 2/3 · COMPARAISON · ACF/PHP VS GUTENBERG NATIF",
-      "autoGenerateControl": true
+      "default": "SECTION 2/3 · COMPARAISON · ACF/PHP VS GUTENBERG NATIF"
     },
     "vizLines": {
       "type": "string",
       "label": "Viz monospace (1 ligne par <br>, séparateur \\n)",
-      "default": "/* Architecture du bloc PHP */\nbloc: register_block_type()\nfichiers: block.json + render.php\nUI: autoGenerateControl WP 7.0\nrendu: serveur PHP\nédition: champs typés, design figé\nbuild requis: aucun\nJS requis: aucun\n\n// → 100% PHP\n// → headless-ready (rendu serveur)\n// → versionnable Git",
-      "autoGenerateControl": true
+      "default": "/* Architecture du bloc PHP */\nbloc: register_block_type()\nfichiers: block.json + render.php\nUI: autoRegister WP 7.0\nrendu: serveur PHP\nédition: champs typés, design figé\nbuild requis: aucun\nJS requis: aucun\n\n// → 100% PHP\n// → headless-ready (rendu serveur)\n// → versionnable Git"
     },
     "titlePart1": {
       "type": "string",
       "label": "Titre — partie 1",
-      "default": "Design",
-      "autoGenerateControl": true
+      "default": "Design"
     },
     "titleHighlight": {
       "type": "string",
       "label": "Titre — mot surligné",
-      "default": "100% locké",
-      "autoGenerateControl": true
+      "default": "100% locké"
     },
     "titlePart2": {
       "type": "string",
       "label": "Titre — partie 2 (après le break)",
-      "default": "",
-      "autoGenerateControl": true
+      "default": ""
     },
     "paragraph1": {
       "type": "string",
       "label": "Paragraphe 1",
-      "default": "Contrairement à M6 (Gutenberg natif + CSS dans un bloc core/html), le design est figé dans le plugin PHP. L'utilisateur ne peut PAS casser la mise en page : il ne voit que des champs typés (texte, URL, toggle, select) dans le sidebar de l'éditeur.",
-      "autoGenerateControl": true
+      "default": "Contrairement à M6 (Gutenberg natif + CSS dans un bloc core/html), le design est figé dans le plugin PHP. L'utilisateur ne peut PAS casser la mise en page : il ne voit que des champs typés (texte, URL, toggle, select) dans le sidebar de l'éditeur."
     },
     "paragraph2": {
       "type": "string",
       "label": "Paragraphe 2",
-      "default": "Le rendu est PHP côté serveur : HTML clean, parfait pour un futur passage headless. Aucune dépendance Node, aucun build, aucun ACF requis — juste WordPress 6.9+ et autoGenerateControl.",
-      "autoGenerateControl": true
+      "default": "Le rendu est PHP côté serveur : HTML clean, parfait pour un futur passage headless. Aucune dépendance Node, aucun build, aucun ACF requis — juste WordPress 6.9+ et autoRegister."
     },
     "prosTitle": {
       "type": "string",
       "label": "Titre colonne pros",
-      "default": "PROS",
-      "autoGenerateControl": true
+      "default": "PROS"
     },
     "prosList": {
       "type": "string",
       "label": "Liste pros (1 item par ligne)",
-      "default": "Design 100% locké\nÉdition non-destructive\nVersionnable Git\nZéro JS / zéro build\nHeadless-ready (rendu serveur)",
-      "autoGenerateControl": true
+      "default": "Design 100% locké\nÉdition non-destructive\nVersionnable Git\nZéro JS / zéro build\nHeadless-ready (rendu serveur)"
     },
     "consTitle": {
       "type": "string",
       "label": "Titre colonne cons",
-      "default": "CONS",
-      "autoGenerateControl": true
+      "default": "CONS"
     },
     "consList": {
       "type": "string",
       "label": "Liste cons (1 item par ligne)",
-      "default": "Coût initial = écrire le plugin\nChaque variante = nouveau bloc ou attribut\nRequiert WP 6.9+ (autoGenerateControl)\nMoins flexible que CSS page-level",
-      "autoGenerateControl": true
+      "default": "Coût initial = écrire le plugin\nChaque variante = nouveau bloc ou attribut\nRequiert WP 6.9+ (autoRegister)\nMoins flexible que CSS page-level"
     }
   },
   "render": "file:./render.php",

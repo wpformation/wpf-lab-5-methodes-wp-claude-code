@@ -6,41 +6,42 @@
   "description": "Banner indiquant la méthode courante de la page (M1-M7). Direction B Lab.",
   "category": "widgets",
   "icon": "flag",
-  "keywords": ["lab", "banner", "wpformation"],
+  "keywords": [
+    "lab",
+    "banner",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
     "prefix": {
       "type": "string",
       "label": "Préfixe",
-      "default": "VOUS CONSULTEZ ·",
-      "autoGenerateControl": true
+      "default": "VOUS CONSULTEZ ·"
     },
     "methodNum": {
       "type": "string",
       "label": "Numéro méthode (badge acid)",
-      "default": "MÉTHODE 07",
-      "autoGenerateControl": true
+      "default": "MÉTHODE 07"
     },
     "methodName": {
       "type": "string",
       "label": "Nom méthode",
-      "default": "Blocs PHP custom (WP 7.0 autoGenerateControl)",
-      "autoGenerateControl": true
+      "default": "Blocs PHP custom (WP 7.0 autoRegister)"
     },
     "tag": {
       "type": "string",
       "label": "Tag droite",
-      "default": "100% PHP",
-      "autoGenerateControl": true
+      "default": "100% PHP"
     },
     "isFeatured": {
       "type": "boolean",
       "label": "Variante featured (fond acid)",
-      "default": false,
-      "autoGenerateControl": true
+      "default": false
     }
   },
   "render": "file:./render.php",

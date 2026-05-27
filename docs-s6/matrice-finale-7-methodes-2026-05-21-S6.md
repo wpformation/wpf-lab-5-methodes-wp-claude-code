@@ -86,12 +86,12 @@
 
 **Cas d'usage** : site indépendant, design custom one-page, pas de plugin Spectra. **Variante 100% native de la voie d'Alexandra.**
 
-### M·07 — Blocs PHP custom (plugin wpf-lab, autoGenerateControl WP 7.0) (S6 nouveau)
+### M·07 — Blocs PHP custom (plugin wpf-lab, autoRegister WP 7.0) (S6 nouveau)
 
 | | C1 Édit | C2 Design | C3 Indép | C4 Repro | C5 Perf | C6 Maint | **Brut** | **Pondéré** |
 |---|---|---|---|---|---|---|---|---|
 | Score | **5** | 5 | **5** | 5 | **5** | **5** | **30/30** | **37.5/37.5** |
-| Justif | Champs typés autoGenerateControl (panel WP natif) | Design 100% locké dans le plugin | Zéro plugin tiers (plugin custom = sous notre contrôle) | REST 1-shot (11 blocs auto-registered) | Content ~3 KB par page (markup minimal) | **CSS + render PHP versionnés Git, MAJ centralisée 1 release = N pages** |
+| Justif | Champs typés autoRegister (panel WP natif) | Design 100% locké dans le plugin | Zéro plugin tiers (plugin custom = sous notre contrôle) | REST 1-shot (11 blocs auto-registered) | Content ~3 KB par page (markup minimal) | **CSS + render PHP versionnés Git, MAJ centralisée 1 release = N pages** |
 
 **Cas d'usage** : refonte site marketing pro avec design system rigoureux + rédacteurs non-techs + équipe dev maintenant la stack long-terme. **La voie pro 2026.**
 
@@ -128,11 +128,11 @@
 
 ## 5 · Insights stratégiques pour l'article WPFormation
 
-1. **Le verdict change avec l'arrivée de M·07** : avant S6, la voie d'Alexandra (M·02) était LA recommandation. Avec WP 7.0 + autoGenerateControl, **M·07 devient supérieure** sur tous les critères strictement quantifiables. La voie d'Alexandra (M·02) reste **le compromis historique** et garde sa pertinence pour les sites existants.
+1. **Le verdict change avec l'arrivée de M·07** : avant S6, la voie d'Alexandra (M·02) était LA recommandation. Avec WP 7.0 + autoRegister, **M·07 devient supérieure** sur tous les critères strictement quantifiables. La voie d'Alexandra (M·02) reste **le compromis historique** et garde sa pertinence pour les sites existants.
 
 2. **M·06 est la voie "indépendance" stratégique** : pour les développeurs qui veulent éviter d'enchaîner les dépendances plugin (Spectra hier, autre demain), M·06 prouve qu'on peut faire de l'Alexandra-grade design sans aucun plugin tiers.
 
-3. **M·07 ouvre un usage qui n'existait pas** : avant WP 7.0, créer un bloc PHP custom nécessitait soit ACF Pro (payant + dépendance externe), soit React + wp-scripts (coût d'entrée élevé). Le combo `apiVersion: 1 + autoRegister + autoGenerateControl + is_dynamic` change la donne — **un développeur PHP solo peut désormais livrer un plugin custom de design system en quelques heures**, sans toucher au JS.
+3. **M·07 ouvre un usage qui n'existait pas** : avant WP 7.0, créer un bloc PHP custom nécessitait soit ACF Pro (payant + dépendance externe), soit React + wp-scripts (coût d'entrée élevé). Le combo `apiVersion: 1 + autoRegister + autoRegister + is_dynamic` change la donne — **un développeur PHP solo peut désormais livrer un plugin custom de design system en quelques heures**, sans toucher au JS.
 
 4. **Le marqueur "content léger" de M·07** (~3 KB par page vs ~190 KB pour M·06) est un avantage compétitif **pour les sites multilingues / fortes volumétries** : duplique 100 pages → 300 KB vs 19 MB. La différence est tangible.
 

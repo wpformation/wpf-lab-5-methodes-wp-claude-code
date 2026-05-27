@@ -6,79 +6,77 @@
   "description": "CTA final Direction B Lab. Fond ink, titre bone avec accents acid + violet, 2 boutons.",
   "category": "widgets",
   "icon": "external",
-  "keywords": ["lab", "cta", "wpformation"],
+  "keywords": [
+    "lab",
+    "cta",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
     "anchor": true,
-    "align": ["full"],
-    "spacing": { "margin": true, "padding": true }
+    "align": [
+      "full"
+    ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
     "eyebrowText": {
       "type": "string",
       "label": "Eyebrow",
-      "default": "SECTION 3/3 · VERDICT M7-A",
-      "autoGenerateControl": true
+      "default": "SECTION 3/3 · VERDICT M7-A"
     },
     "titlePart1": {
       "type": "string",
       "label": "Titre — partie 1",
-      "default": "Blocs PHP custom —",
-      "autoGenerateControl": true
+      "default": "Blocs PHP custom —"
     },
     "titleAcid": {
       "type": "string",
       "label": "Mot accent acid",
-      "default": "design figé",
-      "autoGenerateControl": true
+      "default": "design figé"
     },
     "titleSep": {
       "type": "string",
       "label": "Séparateur entre les 2 accents",
-      "default": "×",
-      "autoGenerateControl": true
+      "default": "×"
     },
     "titleViolet": {
       "type": "string",
       "label": "Mot accent violet",
-      "default": "édition libre",
-      "autoGenerateControl": true
+      "default": "édition libre"
     },
     "titleEnd": {
       "type": "string",
       "label": "Fin de titre",
-      "default": ".",
-      "autoGenerateControl": true
+      "default": "."
     },
     "ctaPrimaryLabel": {
       "type": "string",
       "label": "CTA primaire — texte",
-      "default": "VOIR LE HUB",
-      "autoGenerateControl": true
+      "default": "VOIR LE HUB"
     },
     "ctaPrimaryUrl": {
       "type": "string",
       "label": "CTA primaire — URL",
-      "default": "/",
-      "autoGenerateControl": true
+      "default": "/"
     },
     "ctaGhostLabel": {
       "type": "string",
       "label": "CTA secondaire — texte",
-      "default": "RELIRE SECTION 2",
-      "autoGenerateControl": true
+      "default": "RELIRE SECTION 2"
     },
     "ctaGhostUrl": {
       "type": "string",
       "label": "CTA secondaire — URL",
-      "default": "#sec2",
-      "autoGenerateControl": true
+      "default": "#sec2"
     },
     "metaLine": {
       "type": "string",
       "label": "Ligne meta du bas",
-      "default": "3 blocs PHP custom · 0 dépendance plugin tierce · 0 JS / 0 build · WP 6.9+ autoGenerateControl",
-      "autoGenerateControl": true
+      "default": "3 blocs PHP custom · 0 dépendance plugin tierce · 0 JS / 0 build · WP 7.0 autoRegister"
     }
   },
   "render": "file:./render.php",

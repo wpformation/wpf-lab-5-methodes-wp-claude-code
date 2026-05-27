@@ -6,79 +6,77 @@
   "description": "Hero brutalist Direction B Lab. Titre, sous-titre, eyebrow, 2 CTA. Édition par champs, design figé.",
   "category": "widgets",
   "icon": "megaphone",
-  "keywords": ["lab", "hero", "wpformation"],
+  "keywords": [
+    "lab",
+    "hero",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
     "anchor": true,
-    "align": ["full"],
-    "spacing": { "margin": true, "padding": true }
+    "align": [
+      "full"
+    ],
+    "spacing": {
+      "margin": true,
+      "padding": true
+    }
   },
   "attributes": {
     "eyebrowTag": {
       "type": "string",
       "label": "Eyebrow — tag",
-      "default": "FILE",
-      "autoGenerateControl": true
+      "default": "FILE"
     },
     "eyebrowText": {
       "type": "string",
       "label": "Eyebrow — texte",
-      "default": "methode-07-acf-php.md · POC ACF/PHP · 2026.05.21",
-      "autoGenerateControl": true
+      "default": "methode-07-acf-php.md · POC ACF/PHP · 2026.05.21"
     },
     "titlePart1": {
       "type": "string",
       "label": "Titre — partie 1",
-      "default": "Méthode 07 —",
-      "autoGenerateControl": true
+      "default": "Méthode 07 —"
     },
     "titleHighlight": {
       "type": "string",
       "label": "Titre — mot surligné (acid)",
-      "default": "blocs PHP",
-      "autoGenerateControl": true
+      "default": "blocs PHP"
     },
     "titlePart2": {
       "type": "string",
       "label": "Titre — partie 2",
-      "default": "× zéro JS",
-      "autoGenerateControl": true
+      "default": "× zéro JS"
     },
     "lead": {
       "type": "string",
       "label": "Sous-titre / lead",
-      "default": "3 blocs Gutenberg custom écrits en PHP pur via Claude Code, avec UI auto-générée WP 7.0 (autoGenerateControl). Design Direction B Lab locké, édition non-destructive par champs.",
-      "autoGenerateControl": true
+      "default": "3 blocs Gutenberg custom écrits en PHP pur via Claude Code, avec UI auto-générée WP 7.0 (autoRegister). Design Direction B Lab locké, édition non-destructive par champs."
     },
     "ctaPrimaryLabel": {
       "type": "string",
       "label": "CTA primaire — texte",
-      "default": "VOIR SECTION 2 ↘",
-      "autoGenerateControl": true
+      "default": "VOIR SECTION 2 ↘"
     },
     "ctaPrimaryUrl": {
       "type": "string",
       "label": "CTA primaire — URL",
-      "default": "#sec2",
-      "autoGenerateControl": true
+      "default": "#sec2"
     },
     "ctaGhostLabel": {
       "type": "string",
       "label": "CTA secondaire — texte",
-      "default": "RETOUR HUB",
-      "autoGenerateControl": true
+      "default": "RETOUR HUB"
     },
     "ctaGhostUrl": {
       "type": "string",
       "label": "CTA secondaire — URL",
-      "default": "/",
-      "autoGenerateControl": true
+      "default": "/"
     },
     "metaLine": {
       "type": "string",
       "label": "Ligne meta du bas",
-      "default": "SECTION 1/3 · BLOCS PHP NATIFS · UI AUTOGENERATECONTROL · ZÉRO BUILD",
-      "autoGenerateControl": true
+      "default": "SECTION 1/3 · BLOCS PHP NATIFS · UI AUTOREGISTER · ZÉRO BUILD"
     }
   },
   "render": "file:./render.php",

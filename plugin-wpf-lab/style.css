@@ -323,6 +323,55 @@
   color: var(--b-ink);
 }
 
+.wpf-lab-event a.wpf-lab-btn--acid-on-violet,
+.wpf-lab-btn--acid-on-violet {
+  background: var(--b-acid) !important;
+  color: var(--b-ink) !important;
+  border: 2px solid var(--b-acid) !important;
+  box-shadow: 8px 8px 0 var(--b-ink);
+  padding: 18px 28px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  text-decoration: none !important;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.wpf-lab-event a.wpf-lab-btn--acid-on-violet:hover {
+  background: var(--b-acid) !important;
+  color: var(--b-ink) !important;
+  transform: translate(-3px, -3px);
+  box-shadow: 12px 12px 0 var(--b-ink);
+}
+.wpf-lab-event a.wpf-lab-btn--acid-on-violet:hover .wpf-lab-event__btn-main::after {
+  transform: translateX(4px);
+}
+
+.wpf-lab-event a.wpf-lab-btn--ghost-on-violet,
+.wpf-lab-btn--ghost-on-violet {
+  background: transparent !important;
+  color: var(--b-bg) !important;
+  border: 2px solid var(--b-bg) !important;
+  padding: 18px 26px;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.wpf-lab-event a.wpf-lab-btn--ghost-on-violet:hover {
+  background: var(--b-bg) !important;
+  color: var(--b-violet) !important;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0,0,0,.25);
+}
+
 /* ============================================================================
    S6 EXTENSION — Nouveaux blocs Direction B Lab (utility, localnav, banner,
    stats, why, pillars, methods-table, team). Pattern : sélecteurs préfixés
@@ -1103,6 +1152,330 @@
   letter-spacing: 0.05em;
 }
 
+/* ---------- BLOC 12 : EVENT CTA — design engageant Direction B Lab ---------- */
+.wpf-lab-event {
+  --b-bg: #EDECE7;
+  --b-paper: #FFFFFF;
+  --b-ink: #0A0A0A;
+  --b-ink-2: #2A2A2A;
+  --b-ink-3: #6E6E6E;
+  --b-acid: #D7FF3A;
+  --b-violet: #6F4BFF;
+  background: linear-gradient(135deg, #6F4BFF 0%, #5638D6 100%) !important;
+  color: #EDECE7 !important;
+  padding: 110px 48px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  width: 100vw !important;
+  max-width: 100vw !important;
+  min-width: 100vw !important;
+  margin-left: calc(50% - 50vw) !important;
+  margin-right: calc(50% - 50vw) !important;
+  left: 0 !important;
+  right: 0 !important;
+  box-sizing: border-box !important;
+  font-family: 'Space Grotesk', system-ui, -apple-system, sans-serif !important;
+}
+.wpf-lab-event *, .wpf-lab-event *::before, .wpf-lab-event *::after {
+  box-sizing: border-box;
+}
+/* Reset Astra qui surcharge .entry-content a / .entry-content p / etc. */
+.entry-content .wpf-lab-event,
+body .wpf-lab-event { color: #EDECE7 !important; }
+.entry-content .wpf-lab-event p,
+.entry-content .wpf-lab-event h2,
+.entry-content .wpf-lab-event h3,
+.entry-content .wpf-lab-event ul,
+.entry-content .wpf-lab-event li,
+.entry-content .wpf-lab-event div,
+.entry-content .wpf-lab-event span {
+  color: inherit;
+}
+
+.wpf-lab-event::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 32px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.07) 0 1px, transparent 1px 32px);
+  pointer-events: none;
+}
+
+.wpf-lab-event__glow {
+  position: absolute;
+  top: -120px;
+  right: -180px;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(215,255,58,0.32) 0%, rgba(215,255,58,0) 60%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.wpf-lab-event__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.85fr) minmax(0, 1.6fr);
+  gap: 72px;
+  align-items: center;
+}
+
+.wpf-lab-event__signal {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 72px;
+  height: 72px;
+  background: var(--b-acid);
+  border: 3px solid var(--b-ink);
+  box-shadow: 8px 8px 0 var(--b-ink);
+  animation: wpf-lab-event-pulse 2.6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes wpf-lab-event-pulse {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-4px, -4px); box-shadow: 12px 12px 0 var(--b-ink); }
+}
+
+.wpf-lab-event__col-date {
+  border-right: 2px solid rgba(237, 236, 231, 0.6);
+  padding-right: 56px;
+}
+
+.wpf-lab-event__eyebrow {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: #D7FF3A !important;
+  margin: 0 0 28px !important;
+  font-weight: 600 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  flex-wrap: wrap !important;
+}
+
+.wpf-lab-event__eyebrow-pill {
+  background: #D7FF3A !important;
+  color: #0A0A0A !important;
+  padding: 3px 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em !important;
+  font-size: 11px !important;
+  margin-left: 4px !important;
+}
+
+.wpf-lab-event__dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  background: var(--b-acid);
+  border-radius: 50%;
+  animation: wpf-lab-event-dot 1.2s ease-in-out infinite;
+  box-shadow: 0 0 0 0 rgba(215,255,58,.7);
+}
+
+@keyframes wpf-lab-event-dot {
+  0%   { transform: scale(1);    box-shadow: 0 0 0 0 rgba(215,255,58,.7); }
+  70%  { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(215,255,58,0); }
+  100% { transform: scale(1);    box-shadow: 0 0 0 0 rgba(215,255,58,0); }
+}
+
+.wpf-lab-event__date-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin: 0 0 20px;
+}
+
+.wpf-lab-event__date-big {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 168px !important;
+  line-height: 0.82 !important;
+  letter-spacing: -0.06em !important;
+  color: #EDECE7 !important;
+  margin: 0 !important;
+}
+
+.wpf-lab-event__date-side { padding-top: 18px !important; }
+
+.wpf-lab-event__date-month {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 38px !important;
+  line-height: 1 !important;
+  letter-spacing: -0.02em !important;
+  color: #D7FF3A !important;
+  margin: 0 !important;
+  text-transform: lowercase !important;
+}
+
+.wpf-lab-event__date-year {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 14px !important;
+  letter-spacing: 0.12em !important;
+  color: #EDECE7 !important;
+  opacity: 0.75 !important;
+  margin: 8px 0 0 !important;
+}
+
+.wpf-lab-event__time {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 13px !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #EDECE7 !important;
+  margin: 0 0 14px !important;
+  opacity: 0.9 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+.wpf-lab-event__countdown {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em !important;
+  color: #D7FF3A !important;
+  margin: 0 !important;
+  padding: 8px 14px !important;
+  border: 1px dashed rgba(215, 255, 58, 0.5) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+}
+
+.wpf-lab-event__col-content { position: relative; }
+
+.wpf-lab-event__hook {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  color: #D7FF3A !important;
+  margin: 0 0 18px !important;
+  font-weight: 600 !important;
+}
+
+.wpf-lab-event__title {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 56px !important;
+  line-height: 1.02 !important;
+  letter-spacing: -0.038em !important;
+  color: #EDECE7 !important;
+  margin: 0 0 22px !important;
+}
+
+.wpf-lab-event__title-acid {
+  color: var(--b-acid) !important;
+  background: transparent !important;
+  padding: 0 !important;
+  position: relative;
+  display: inline-block;
+}
+.wpf-lab-event__title-acid::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 12px;
+  background: rgba(215, 255, 58, 0.18);
+  z-index: -1;
+}
+
+.wpf-lab-event__lead {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 17px !important;
+  line-height: 1.55 !important;
+  color: #EDECE7 !important;
+  margin: 0 0 32px !important;
+  max-width: 580px !important;
+  opacity: 0.94 !important;
+}
+
+.wpf-lab-event__row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 26px;
+  align-items: stretch;
+}
+
+.wpf-lab-event__btn-main {
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-weight: 700;
+  font-size: 19px;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  color: var(--b-ink) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.wpf-lab-event__btn-main::after {
+  content: "→";
+  display: inline-block;
+  font-size: 22px;
+  transition: transform 0.18s ease;
+}
+.wpf-lab-event__btn-sub {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--b-ink) !important;
+  opacity: 0.65;
+  font-weight: 500;
+}
+
+.wpf-lab-event__arrow {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.wpf-lab-event__trust {
+  list-style: none !important;
+  padding: 18px 0 0 !important;
+  margin: 0 !important;
+  border-top: 1px dashed rgba(237, 236, 231, 0.28) !important;
+  display: flex !important;
+  gap: 28px !important;
+  flex-wrap: wrap !important;
+}
+.wpf-lab-event__trust li {
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11.5px !important;
+  letter-spacing: 0.06em !important;
+  color: #EDECE7 !important;
+  opacity: 0.82 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  list-style: none !important;
+}
+.wpf-lab-event__check {
+  color: #D7FF3A !important;
+  font-weight: 700 !important;
+  font-size: 13px !important;
+  flex-shrink: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wpf-lab-event__signal,
+  .wpf-lab-event__dot { animation: none; }
+}
+
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
   .wpf-lab-hero { padding: 48px 24px; }
@@ -1154,4 +1527,33 @@
   .wpf-lab-team__grid { grid-template-columns: 1fr; }
   .wpf-lab-team__card { border-right: 0; border-bottom: 2px solid var(--b-ink); }
   .wpf-lab-team__card:last-child { border-bottom: 0; }
+
+  .wpf-lab-event { padding: 64px 24px !important; }
+  .wpf-lab-event__inner { display: block !important; grid-template-columns: 1fr !important; gap: 0 !important; }
+  .wpf-lab-event__col-date {
+    display: block !important;
+    border-right: 0 !important;
+    border-bottom: 2px solid rgba(237, 236, 231, 0.5) !important;
+    padding-right: 0 !important;
+    padding-bottom: 36px !important;
+    margin-bottom: 36px !important;
+  }
+  .wpf-lab-event__col-content { display: block !important; }
+  .wpf-lab-event__date-big { font-size: 112px !important; }
+  .wpf-lab-event__date-month { font-size: 28px !important; }
+  .wpf-lab-event__title { font-size: 34px !important; }
+  .wpf-lab-event__lead { font-size: 15.5px !important; margin-bottom: 26px !important; }
+  .wpf-lab-event__signal { width: 44px !important; height: 44px !important; box-shadow: 5px 5px 0 var(--b-ink); }
+  .wpf-lab-event__glow { width: 320px !important; height: 320px !important; }
+  .wpf-lab-event__row { flex-direction: column !important; align-items: stretch !important; }
+  .wpf-lab-event__row .wpf-lab-btn { width: 100%; box-sizing: border-box; justify-content: flex-start; }
+  .wpf-lab-event__btn-main { font-size: 17px !important; }
+  .wpf-lab-event__trust { flex-direction: column; gap: 10px; }
+  .wpf-lab-event__date-big { font-size: 96px; }
+  .wpf-lab-event__date-month { font-size: 24px; margin-bottom: 18px; }
+  .wpf-lab-event__title { font-size: 32px; }
+  .wpf-lab-event__lead { font-size: 15px; }
+  .wpf-lab-event__signal { width: 40px; height: 40px; box-shadow: 4px 4px 0 var(--b-ink); }
+  .wpf-lab-event__row { flex-direction: column; align-items: stretch; }
+  .wpf-lab-event__row .wpf-lab-btn { justify-content: space-between; }
 }

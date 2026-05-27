@@ -33,7 +33,7 @@
 **Le test a évolué de 5 → 7 méthodes**. La session S6 (21 mai 2026) a ajouté deux nouvelles approches qui n'existaient pas dans l'article précédent :
 
 - **M·06 — Gutenberg pur + CSS dans un seul bloc `core/html`** : la voie 100 % WordPress natif, sans aucun plugin tiers, avec un design pixel-conforme à la voie historique de WPFormation.
-- **M·07 — Blocs PHP custom (plugin `wpf-lab` + autoGenerateControl WP 7.0)** : la voie pro 2026, qui exploite le nouveau pattern WordPress 7.0 permettant d'écrire des blocs PHP custom avec UI auto-générée, **sans une ligne de JavaScript, sans React, sans build**.
+- **M·07 — Blocs PHP custom (plugin `wpf-lab` + autoRegister WP 7.0)** : la voie pro 2026, qui exploite le nouveau pattern WordPress 7.0 permettant d'écrire des blocs PHP custom avec UI auto-générée, **sans une ligne de JavaScript, sans React, sans build**.
 
 **Le vainqueur change** : ce n'est plus M·02 (« Gutenberg + CSS personnalisé »). C'est **M·07**, qui obtient un score parfait **30 / 30 brut · 37,5 / 37,5 pondéré**. M·02 (l'ancien vainqueur) reste cité comme **la voie historique** (la « voie d'Alexandra » chez WPFormation), pertinente pour les sites existants, mais surpassée pour toute refonte 2026.
 
@@ -72,7 +72,7 @@ Au cours des sessions S4 et S5, deux constats sont apparus :
 
 1. **M·02 a un défaut structurel** : elle exige le plugin Spectra (gratuit certes, mais ajout de dépendance). Question légitime : peut-on obtenir le même rendu **sans aucun plugin** ? → naissance de **M·06**.
 
-2. **WordPress 7.0 a livré en janvier 2026 le pattern `autoGenerateControl`** : un nouveau combo (`apiVersion: 1` + `supports.autoRegister: true` + `autoGenerateControl: true` + `is_dynamic: true` + `render: "file:./render.php"`) qui permet d'écrire un bloc PHP custom complet **sans toucher au JavaScript**. Cette nouveauté change la donne pour les développeurs PHP solo (le profil WPFormation), qui pouvaient jusqu'ici choisir entre ACF Pro (payant) ou React+wp-scripts (coût d'entrée élevé). → naissance de **M·07**.
+2. **WordPress 7.0 a livré en janvier 2026 le `autoRegister` (PHP-only block registration)** : un nouveau combo (`supports.autoRegister: true` (au niveau bloc) + un rendu (`render: "file:./render.php"` ou `render_callback`)) qui permet d'écrire un bloc PHP custom complet **sans toucher au JavaScript**. Cette nouveauté change la donne pour les développeurs PHP solo (le profil WPFormation), qui pouvaient jusqu'ici choisir entre ACF Pro (payant) ou React+wp-scripts (coût d'entrée élevé). → naissance de **M·07**.
 
 Ces deux ajouts ont été testés en S6, scorés avec la même grille, et placés dans le classement. **Le vainqueur a changé**.
 
@@ -100,7 +100,7 @@ Ce document est conçu pour permettre au Claude Code du projet WPFormation de **
 | Hébergeur | o2switch (Tiger Protect actif → rate-limit 429 sur écritures fréquentes) |
 | Thème | Astra (free) |
 | Plugin Spectra | Activé (free + Pro pour M·05) |
-| WordPress version | 7.0+ (pour le pattern `autoGenerateControl` de M·07) |
+| WordPress version | 7.0+ (pour le `autoRegister` (PHP-only block registration) de M·07) |
 | Outil pilote | Claude Code (CLI), Auto Mode actif |
 | API d'écriture | REST API WordPress + meta Spectra `_uag_custom_page_level_css` pour le CSS par page |
 | Captures | Playwright (1440×900 desktop + 375×812 mobile) |
@@ -320,11 +320,11 @@ Pour chaque méthode : pitch, comment ça marche techniquement, avantages, incon
 
 ---
 
-### 4.7 — M·07 · Blocs PHP custom (plugin `wpf-lab` + autoGenerateControl WP 7.0) ★ NOUVEAU S6 ★ GAGNANT
+### 4.7 — M·07 · Blocs PHP custom (plugin `wpf-lab` + autoRegister WP 7.0) ★ NOUVEAU S6 ★ GAGNANT
 
 **URL démo** : https://test.wpformation.com/methode-blocs-php-custom/
 
-**Pitch** : La voie **pro 2026**. Un plugin custom (`wpf-lab`) déclare 11 blocs PHP, chacun avec un rendu serveur et une UI d'édition **auto-générée par WordPress 7.0** depuis le schéma d'attributs (`autoGenerateControl`). **Zéro JavaScript, zéro React, zéro build**. Le design est versionné dans Git, déployable sur N pages en un seul upload de plugin.
+**Pitch** : La voie **pro 2026**. Un plugin custom (`wpf-lab`) déclare 11 blocs PHP, chacun avec un rendu serveur et une UI d'édition **auto-générée par WordPress 7.0** depuis le schéma d'attributs (`autoRegister`). **Zéro JavaScript, zéro React, zéro build**. Le design est versionné dans Git, déployable sur N pages en un seul upload de plugin.
 
 **Technique** :
 
@@ -339,18 +339,17 @@ Pour chaque bloc (par exemple `lab-hero`) :
   "title": "Lab Hero",
   "category": "wpf-lab",
   "supports": { "html": false, "autoRegister": true },
-  "is_dynamic": true,
   "render": "file:./render.php",
   "attributes": {
-    "eyebrowFile":   { "type": "string", "default": "METHODE-07-ACF-PHP.MD", "autoGenerateControl": true },
-    "eyebrowPath":   { "type": "string", "default": "POC ACF/PHP · 2026.05.21", "autoGenerateControl": true },
-    "titleStart":    { "type": "string", "default": "Méthode 07 —", "autoGenerateControl": true },
-    "titleHighlight":{ "type": "string", "default": "blocs PHP", "autoGenerateControl": true },
-    "titleEnd":      { "type": "string", "default": "× zéro JS", "autoGenerateControl": true },
-    "lead":          { "type": "string", "default": "3 blocs Gutenberg custom écrits en PHP pur via Claude Code, avec UI auto-générée WP 7.0 (autoGenerateControl). Design Direction B Lab locké, édition non-destructive par champs.", "autoGenerateControl": true },
-    "ctaPrimary":    { "type": "string", "default": "Voir section 2", "autoGenerateControl": true },
-    "ctaSecondary":  { "type": "string", "default": "Retour Hub", "autoGenerateControl": true },
-    "metaLine":      { "type": "string", "default": "section 1/3 · blocs PHP natifs · UI autoGenerateControl · zéro build", "autoGenerateControl": true }
+    "eyebrowFile":   { "type": "string", "default": "METHODE-07-PHP-ONLY-BLOCK-REGISTRATION.MD" },
+    "eyebrowPath":   { "type": "string", "default": "WP 7.0 · 2026.05.21" },
+    "titleStart":    { "type": "string", "default": "Méthode 07 —" },
+    "titleHighlight":{ "type": "string", "default": "blocs PHP" },
+    "titleEnd":      { "type": "string", "default": "× zéro JS" },
+    "lead":          { "type": "string", "default": "3 blocs Gutenberg custom écrits en PHP pur via Claude Code, avec UI auto-générée WP 7.0 (autoRegister). Design Direction B Lab locké, édition non-destructive par champs." },
+    "ctaPrimary":    { "type": "string", "default": "Voir section 2" },
+    "ctaSecondary":  { "type": "string", "default": "Retour Hub" },
+    "metaLine":      { "type": "string", "default": "section 1/3 · blocs PHP natifs · UI autoRegister · zéro build" }
   }
 }
 ```
@@ -392,7 +391,7 @@ Et dans le contenu de la page, **une seule ligne** :
 <!-- wp:wpf/lab-hero /-->
 ```
 
-WordPress 7.0 fait le reste : il lit le `block.json`, voit `autoGenerateControl: true` sur chaque attribut, et génère automatiquement la sidebar d'édition (un champ par attribut, type `string` → input texte, type `boolean` → toggle, etc.).
+WordPress 7.0 fait le reste : il lit le `block.json`, voit `autoRegister: true` sur chaque attribut, et génère automatiquement la sidebar d'édition (un champ par attribut, type `string` → input texte, type `boolean` → toggle, etc.).
 
 **Le rendu front est piloté par `render.php` côté serveur**. Pas d'hydration, pas de `useBlockProps`, pas de `edit.js`, pas de `save.js`.
 
@@ -545,7 +544,7 @@ Si on insiste sur le design :
 
 **Apport éditorial pour l'article** : démontrer qu'il existe une voie 100 % WordPress natif qui atteint la qualité M·02. C'est le contre-argument à « il faut Spectra ».
 
-### 7.2 M·07 — La découverte du pattern `autoGenerateControl` WP 7.0
+### 7.2 M·07 — La découverte du `autoRegister` (PHP-only block registration) WP 7.0
 
 **Question initiale (S5)** : « Comment créer un bloc Gutenberg avec une UI d'édition custom sans JavaScript, sans React, sans build ? »
 
@@ -554,20 +553,19 @@ Si on insiste sur le design :
 - React + wp-scripts : coût d'entrée élevé pour un dev PHP
 - Anciens blocs PHP (`register_block_type` sans `block.json`) : UI d'édition pauvre voire inexistante
 
-**WP 7.0 a livré le combo** :
+**WP 7.0 a livré le combo PHP-only block registration** (dev note Miguel Fonseca du 3 mars 2026, ticket Trac #64639) :
 ```json
 {
   "apiVersion": 1,
   "supports": { "autoRegister": true },
-  "is_dynamic": true,
   "render": "file:./render.php",
   "attributes": {
-    "champ1": { "type": "string", "default": "...", "autoGenerateControl": true }
+    "champ1": { "type": "string", "default": "..." }
   }
 }
 ```
 
-**Effet** : WordPress lit le `block.json`, voit `autoGenerateControl: true` sur chaque attribut, **génère automatiquement la sidebar d'édition** dans Gutenberg. Le rédacteur voit un champ par attribut, type adapté au type déclaré (`string` → input texte, `boolean` → toggle, `number` → number input, `enum` → select).
+**Effet** : WordPress lit le `block.json`, voit `supports.autoRegister: true` au niveau du bloc, **génère automatiquement la sidebar d'édition** dans Gutenberg en dérivant le contrôle du `type` de chaque attribut (`string` → input texte, `boolean` → toggle, `number`/`integer` → number input, `string` + `enum` → select). Aucun flag à poser par attribut. Aucun flag `is_dynamic` — le bloc est dynamique du fait d'avoir un `render`.
 
 **Démarche** :
 1. POC à 1 bloc (S5) → ~17 min, fonctionnel
@@ -577,7 +575,7 @@ Si on insiste sur le design :
 
 **Résultat** : page M·07 publiée à https://test.wpformation.com/methode-blocs-php-custom/. Markup `post_content` = **11 lignes, 3 KB**. Tout le reste (design, structure, contenu par défaut) est dans le plugin.
 
-**Apport éditorial pour l'article** : c'est **la nouveauté technique majeure** que l'article doit présenter. Le pattern `autoGenerateControl` ouvre un usage qui n'existait pas pour les développeurs PHP solo. La maquette finale est livrée en quelques heures, versionnée Git, et déployable cross-projets (WPFormation 2026, OGEEAT, LoginArmor, etc.).
+**Apport éditorial pour l'article** : c'est **la nouveauté technique majeure** que l'article doit présenter. Le `autoRegister` (PHP-only block registration) ouvre un usage qui n'existait pas pour les développeurs PHP solo. La maquette finale est livrée en quelques heures, versionnée Git, et déployable cross-projets (WPFormation 2026, OGEEAT, LoginArmor, etc.).
 
 ---
 
@@ -693,7 +691,7 @@ Synthèse des arguments éditoriaux pour la nouvelle version de l'article :
 
 ### 9.4 La phrase à retenir pour l'article
 
-> **« WordPress 7.0 a transformé l'écriture de blocs custom en exercice de PHP solo. Avec le pattern `autoGenerateControl`, on livre un design system complet en 1 plugin, sans une ligne de JavaScript, versionné Git, déployable cross-projets. C'est la voie pro 2026. »**
+> **« WordPress 7.0 a transformé l'écriture de blocs custom en exercice de PHP solo. Avec le `autoRegister` (PHP-only block registration), on livre un design system complet en 1 plugin, sans une ligne de JavaScript, versionné Git, déployable cross-projets. C'est la voie pro 2026. »**
 
 ---
 
@@ -795,7 +793,7 @@ Toutes les captures sont dans `g:\CLAUDE-PROJETS\WPF-AI-LAB\captures\`.
 - Polices : Space Grotesk 700, JetBrains Mono 500 (Google Fonts)
 ```
 
-### 12.2 Pattern WP 7.0 autoGenerateControl (rappel)
+### 12.2 Pattern WP 7.0 autoRegister (rappel)
 
 **Pré-requis combinés** :
 
@@ -803,24 +801,24 @@ Toutes les captures sont dans `g:\CLAUDE-PROJETS\WPF-AI-LAB\captures\`.
 {
   "apiVersion": 1,
   "supports": { "autoRegister": true },
-  "is_dynamic": true,
   "render": "file:./render.php"
 }
 ```
 
-**Sur chaque attribut éditable** :
+**Pour chaque attribut éditable, déclare simplement son `type`** — c'est tout :
 
 ```json
 {
   "attributes": {
     "monChamp": {
       "type": "string",
-      "default": "valeur par défaut",
-      "autoGenerateControl": true
+      "default": "valeur par défaut"
     }
   }
 }
 ```
+
+Pas de flag par attribut. WordPress 7.0+ dérive le contrôle sidebar du `type` déclaré (`string` → input texte, `boolean` → toggle, `integer`/`number` → number input, `string` + `enum` → select).
 
 **Boostrap PHP** (`wpf-lab.php`) :
 
@@ -956,7 +954,7 @@ Pour faciliter la réécriture de l'article. Le rédacteur peut s'en inspirer li
    - Verdict par cas d'usage (table « quel cas → quelle méthode »)
 
 6. **Focus M·07 (500-800 mots)**
-   - Le pattern `autoGenerateControl` expliqué
+   - Le `autoRegister` (PHP-only block registration) expliqué
    - Code sample concret (1 bloc complet, block.json + render.php)
    - La couche « wow » CSS Direction B (mentionner les hovers, l'étoile pulsée, le shimmer)
    - Captures de la page live
@@ -989,14 +987,14 @@ Pour faciliter la réécriture de l'article. Le rédacteur peut s'en inspirer li
 - 1 capture de la table 7-méthodes (depuis `captures/m7-wow-methods-rest.png`)
 - 1 capture du hover pillars (depuis `captures/m7-wow-pillars-hover.png`) — pour démontrer la couche « wow »
 - 1 zoom code sample bloc M·07 (`block.json + render.php`)
-- 1 capture du BO Gutenberg (sidebar `autoGenerateControl` en action)
+- 1 capture du BO Gutenberg (sidebar `autoRegister` en action)
 
 ### Mots-clés SEO suggérés
 
 - créer une page WordPress
 - Claude Code WordPress
 - bloc Gutenberg personnalisé
-- autoGenerateControl WordPress 7
+- autoRegister WordPress 7
 - bloc PHP custom WordPress
 - WordPress 2026
 - alternative ACF Pro

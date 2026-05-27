@@ -6,24 +6,78 @@
   "description": "Section pourquoi cet article. Eyebrow + titre + body + pull quote + note. Direction B Lab.",
   "category": "widgets",
   "icon": "format-quote",
-  "keywords": ["lab", "why", "wpformation"],
+  "keywords": [
+    "lab",
+    "why",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
-    "eyebrow":      { "type": "string", "label": "Eyebrow violet",       "default": "// 00.intro · pourquoi cet article", "autoGenerateControl": true },
-    "titlePart1":   { "type": "string", "label": "Titre partie 1",       "default": "WordPress", "autoGenerateControl": true },
-    "titleViolet":  { "type": "string", "label": "Opérateur violet (ex +)", "default": "+", "autoGenerateControl": true },
-    "titlePart2":   { "type": "string", "label": "Titre partie 2",       "default": "Claude Code :", "autoGenerateControl": true },
-    "titleAcid":    { "type": "string", "label": "Titre mot surligné acid", "default": "on a creusé", "autoGenerateControl": true },
-    "titlePart3":   { "type": "string", "label": "Titre partie 3 (fin)", "default": "pour vous.", "autoGenerateControl": true },
-    "body":         { "type": "string", "label": "Paragraphe body",      "default": "Plutôt que vous proposer un avis à l'aveugle, WPFormation a bâti intentionnellement 7 approches pour créer des pages WordPress complètes avec Claude Code, sur exactement la même structure (10 sections), avec le même contenu et les mêmes images. Verdict honnête, captures à l'appui, ranking documenté.", "autoGenerateControl": true },
-    "pullTag":      { "type": "string", "label": "Pull tag",             "default": "PULL · 01", "autoGenerateControl": true },
-    "pullQuote":    { "type": "string", "label": "Pull quote",           "default": "« Avant de recommander une méthode, on l'a fait tourner sur un site réel. Voici les 7 démos accessibles librement. »", "autoGenerateControl": true },
-    "pullAuthor":   { "type": "string", "label": "Pull author",          "default": "— Fabrice · WPFormation", "autoGenerateControl": true },
-    "noteText":     { "type": "string", "label": "Note (footnote)",      "default": "NOTE 1 — La méthode qu'on a retenue → Blocs PHP custom avec autoGenerateControl WP 7.0 → design 100% locké et édition non-destructive via panel WP natif. Sans plugin payant, sans ACF, sans build JS.", "autoGenerateControl": true },
-    "noteRef":      { "type": "string", "label": "Note référence",       "default": "↗︎ N1/01", "autoGenerateControl": true }
+    "eyebrow": {
+      "type": "string",
+      "label": "Eyebrow violet",
+      "default": "// 00.intro · pourquoi cet article"
+    },
+    "titlePart1": {
+      "type": "string",
+      "label": "Titre partie 1",
+      "default": "WordPress"
+    },
+    "titleViolet": {
+      "type": "string",
+      "label": "Opérateur violet (ex +)",
+      "default": "+"
+    },
+    "titlePart2": {
+      "type": "string",
+      "label": "Titre partie 2",
+      "default": "Claude Code :"
+    },
+    "titleAcid": {
+      "type": "string",
+      "label": "Titre mot surligné acid",
+      "default": "on a creusé"
+    },
+    "titlePart3": {
+      "type": "string",
+      "label": "Titre partie 3 (fin)",
+      "default": "pour vous."
+    },
+    "body": {
+      "type": "string",
+      "label": "Paragraphe body",
+      "default": "Plutôt que vous proposer un avis à l'aveugle, WPFormation a bâti intentionnellement 7 approches pour créer des pages WordPress complètes avec Claude Code, sur exactement la même structure (10 sections), avec le même contenu et les mêmes images. Verdict honnête, captures à l'appui, ranking documenté."
+    },
+    "pullTag": {
+      "type": "string",
+      "label": "Pull tag",
+      "default": "PULL · 01"
+    },
+    "pullQuote": {
+      "type": "string",
+      "label": "Pull quote",
+      "default": "« Avant de recommander une méthode, on l'a fait tourner sur un site réel. Voici les 7 démos accessibles librement. »"
+    },
+    "pullAuthor": {
+      "type": "string",
+      "label": "Pull author",
+      "default": "— Fabrice · WPFormation"
+    },
+    "noteText": {
+      "type": "string",
+      "label": "Note (footnote)",
+      "default": "NOTE 1 — La méthode qu'on a retenue → Blocs PHP custom avec autoRegister WP 7.0 → design 100% locké et édition non-destructive via panel WP natif. Sans plugin payant, sans ACF, sans build JS."
+    },
+    "noteRef": {
+      "type": "string",
+      "label": "Note référence",
+      "default": "↗︎ N1/01"
+    }
   },
   "render": "file:./render.php",
   "style": "wpf-lab-blocks-style"

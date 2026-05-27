@@ -1,8 +1,10 @@
 # WPF Lab — Blocs Direction B
 
-> **11 blocs Gutenberg PHP custom** pour WordPress 7.0+, écrits sans JavaScript et sans build, grâce au pattern **`autoGenerateControl`** (UI d'édition auto-générée par WP 7.0 depuis le schéma d'attributs du `block.json`).
+> **12 blocs Gutenberg PHP custom** pour WordPress 7.0+, écrits sans JavaScript et sans build, grâce au pattern **PHP-only block registration** introduit en WP 7.0 (`supports.autoRegister: true` — l'éditeur dérive automatiquement les contrôles sidebar du `type` de chaque attribut).
+>
+> **Note de correction (2026-05-27)** : les versions ≤ 1.3.5 de ce plugin et toute la documentation associée mentionnaient un pattern `autoGenerateControl` posé sur chaque attribut. **Ce flag n'existe pas dans WordPress** — c'était une hallucination de Claude Code à la génération. Le code tournait correctement grâce à `supports.autoRegister: true` qui était posé en parallèle (le vrai flag). Les flags fictifs `autoGenerateControl: true` et `is_dynamic: true` ont été purgés en v1.4.0 — aucun changement de comportement à attendre, seulement de la fausse API en moins dans le code et la doc. Source officielle : [PHP-only block registration](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/) (Miguel Fonseca, 3 mars 2026, ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639)).
 
-**Version** : 1.1.0 · **Auteur** : Fabrice Ducarme — WPFormation · **Licence** : GPL-2.0-or-later · **WP requis** : 6.9+ · **PHP requis** : 7.4+
+**Version** : 1.4.0 · **Auteur** : Fabrice Ducarme — WPFormation · **Licence** : GPL-2.0-or-later · **WP requis** : 7.0+ · **PHP requis** : 7.4+
 
 Ce plugin a été développé et battle-tested dans le cadre du projet [WPF-AI-LAB](https://github.com/wpformation/wpf-ai-lab) — un benchmark comparatif de 7 méthodes pour créer une page WordPress en 2026. Il y représente la **méthode M·07**, classée 1ʳᵉ au scoring final (30/30 brut, 37,5/37,5 pondéré).
 
@@ -12,27 +14,27 @@ Article complet du benchmark : <https://wpformation.com/creer-page-wordpress-cla
 
 ## Pourquoi ce plugin existe
 
-WordPress 7.0 (janvier 2026) a introduit un combo de flags qui change la donne pour les développeurs PHP solo :
+WordPress 7.0 a introduit le pattern **PHP-only block registration** (dev note officielle de [Miguel Fonseca](https://profiles.wordpress.org/mfonseca/), 3 mars 2026, implémentation par [@priethor](https://profiles.wordpress.org/priethor/), ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639)) qui change la donne pour les développeurs PHP solo :
 
 ```json
 {
   "apiVersion": 1,
   "supports": { "autoRegister": true },
-  "is_dynamic": true,
   "render": "file:./render.php",
   "attributes": {
     "monChamp": {
       "type": "string",
-      "default": "valeur par défaut",
-      "autoGenerateControl": true
+      "default": "valeur par défaut"
     }
   }
 }
 ```
 
-Effet : WordPress lit le `block.json`, voit `autoGenerateControl: true` sur chaque attribut, et **génère automatiquement la sidebar d'édition Gutenberg** — un input par attribut, type adapté à `type`. Le rendu front est piloté par `render.php` côté serveur. **Zéro React, zéro `edit.js`, zéro `save.js`, zéro `wp-scripts`, zéro build.**
+Effet : WordPress lit le `block.json`, voit `supports.autoRegister: true` au niveau du bloc, et **génère automatiquement la sidebar d'édition Gutenberg** — un contrôle par attribut, dérivé du `type` déclaré (`string` → input texte, `integer`/`number` → input numérique, `boolean` → toggle, `string` + `enum` → select). Le rendu front est piloté par `render.php` côté serveur. **Zéro React, zéro `edit.js`, zéro `save.js`, zéro `wp-scripts`, zéro build.**
 
 Avant WP 7.0, écrire un bloc PHP custom avec UI complète demandait soit ACF Pro (payant, dépendance externe), soit React + wp-scripts (coût d'entrée élevé). Aujourd'hui, un dev PHP solo livre un design system complet en quelques heures.
+
+> **Limitation officielle** (dev note Fonseca) : les contrôles ne sont **pas** auto-générés pour les attributs ayant le rôle `local`, ni pour les types non supportés (`media`, `file`, `richtext`, blocs imbriqués). Pour ces cas, il faut un `edit.js` React ou attendre une extension de l'API.
 
 ---
 
@@ -135,7 +137,7 @@ wpf-lab/
 ├── LICENSE
 └── blocks/
     ├── lab-utility/
-    │   ├── block.json   # Déclaration attributs avec autoGenerateControl
+    │   ├── block.json   # Déclaration attributs typés (UI sidebar dérivée du type via autoRegister)
     │   └── render.php   # Template serveur (PHP pur)
     ├── lab-localnav/
     │   ├── block.json
@@ -165,14 +167,15 @@ wpf-lab/
     "titleHighlight": {
       "type": "string",
       "label": "Titre — mot surligné (acid)",
-      "default": "blocs PHP",
-      "autoGenerateControl": true
+      "default": "blocs PHP"
     }
   },
   "render": "file:./render.php",
   "style": "wpf-lab-blocks-style"
 }
 ```
+
+Pas de flag par attribut : c'est le `type` qui détermine le contrôle généré par l'éditeur. Le combo réel est donc **`supports.autoRegister: true` + un rendu (`render: "file:./render.php"` ou `render_callback` en PHP)** — c'est tout.
 
 `blocks/lab-hero/render.php` :
 
@@ -237,7 +240,7 @@ Tu peux dupliquer un dossier `blocks/lab-XXX/` dans ton thème ou un plugin enfa
 
 Le plugin est conçu pour servir de **squelette de design system**. Ajouter un bloc :
 
-1. Créer `blocks/mon-bloc/block.json` avec `apiVersion: 1`, `supports.autoRegister: true`, `is_dynamic: true`, `autoGenerateControl: true` sur chaque attribut éditable
+1. Créer `blocks/mon-bloc/block.json` avec `supports.autoRegister: true` (le seul flag nécessaire au niveau bloc) et `render: "file:./render.php"`. Déclarer chaque attribut avec son `type` (`string`, `integer`, `number`, `boolean`) — l'éditeur dérive automatiquement le contrôle sidebar. Aucun flag par attribut à poser.
 2. Créer `blocks/mon-bloc/render.php`
 3. Ajouter `'mon-bloc'` dans le tableau `$blocks` de `wpf-lab.php`
 4. Ajouter les styles `.wpf-lab-mon-bloc` dans `style.css`
@@ -246,7 +249,7 @@ Le plugin est conçu pour servir de **squelette de design system**. Ajouter un b
 
 ## Limites connues
 
-1. **WordPress 7.0+ requis** : le combo `autoGenerateControl + autoRegister + is_dynamic` n'existe pas avant.
+1. **WordPress 7.0+ requis** : `supports.autoRegister` (pattern PHP-only block registration) n'existe pas avant.
 2. **Contenu figé pour 2 blocs** : `lab-methods-table` et `lab-team` ont leur contenu interne hard-codé dans `render.php` (7 méthodes scorées et 3 contributeurs, c'est le contenu du benchmark WPF-AI-LAB). Pour un usage cross-site, **fork le plugin et adapte ces 2 render.php** à ton contenu, ou crée des attributs JSON `repeater`.
 3. **Polices Google Fonts via `@import`** : pas RGPD-friendly par défaut. Self-hoster pour la prod.
 4. **Pas encore traduit** : `Text Domain: wpf-lab-blocks` déclaré mais pas de `.pot/.po` fournis. Pull request bienvenue.
@@ -269,8 +272,9 @@ Le plugin est conçu pour servir de **squelette de design system**. Ajouter un b
 
 - **Conception et benchmark** : Fabrice Ducarme — [WPFormation](https://wpformation.com)
 - **Co-développement** : Claude Code (Anthropic, modèle Opus 4.7)
-- **Pattern `autoGenerateControl`** : équipe Core AI WordPress (livré en WP 7.0, janvier 2026)
+- **Pattern PHP-only block registration (`autoRegister`)** : Miguel Fonseca (dev note officielle [du 3 mars 2026](https://make.wordpress.org/core/2026/03/03/php-only-block-registration/)), implémentation par [@priethor](https://profiles.wordpress.org/priethor/), ticket Trac [#64639](https://core.trac.wordpress.org/ticket/64639). Disponible depuis WordPress 7.0.
 - **Inspiration design Direction B** : tradition brutalist-éditoriale (Werkplaats Typografie, mschf, etc.)
+- **Signalement de l'hallucination `autoGenerateControl`** (corrigée en v1.4.0) : [Matthieu Guirlinger](https://www.linkedin.com/in/matthieu-guirlinger/) (Tech Lead unflux), commentaire LinkedIn du 2026-05-27.
 
 ---
 

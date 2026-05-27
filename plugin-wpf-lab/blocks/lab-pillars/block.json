@@ -6,24 +6,78 @@
   "description": "Grille 4 colonnes au filet : éditabilité / design / indépendance / reproductibilité. Direction B Lab.",
   "category": "widgets",
   "icon": "grid-view",
-  "keywords": ["lab", "pillars", "wpformation"],
+  "keywords": [
+    "lab",
+    "pillars",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
-    "eyebrow":  { "type": "string", "label": "Eyebrow violet", "default": "// 01.piliers", "autoGenerateControl": true },
-    "title":    { "type": "string", "label": "Titre H2 (avant break)", "default": "4 piliers", "autoGenerateControl": true },
-    "titleEnd": { "type": "string", "label": "Titre H2 (après break)",  "default": "d'évaluation.", "autoGenerateControl": true },
-    "lead":     { "type": "string", "label": "Lead", "default": "Quatre dimensions qui déterminent si une méthode tient sur la durée ou pas.", "autoGenerateControl": true },
-    "p1Name":   { "type": "string", "label": "Pilier 1 nom (acid)",  "default": "éditabilité native", "autoGenerateControl": true },
-    "p1Body":   { "type": "string", "label": "Pilier 1 body",        "default": "La page reste-t-elle modifiable depuis l'éditeur Gutenberg WordPress sans expert qui réintervient, sans toucher au code ?", "autoGenerateControl": true },
-    "p2Name":   { "type": "string", "label": "Pilier 2 nom (paper)", "default": "qualité du design", "autoGenerateControl": true },
-    "p2Body":   { "type": "string", "label": "Pilier 2 body",        "default": "Le rendu visuel final tient-il à hauteur d'un site professionnel ? Typo, hiérarchie, espaces graphiques, rigueur visuelle.", "autoGenerateControl": true },
-    "p3Name":   { "type": "string", "label": "Pilier 3 nom (violet)","default": "indépendance", "autoGenerateControl": true },
-    "p3Body":   { "type": "string", "label": "Pilier 3 body",        "default": "Combien de plugins payants, de thèmes verrouillés ou de services tiers la méthode requiert pour fonctionner ?", "autoGenerateControl": true },
-    "p4Name":   { "type": "string", "label": "Pilier 4 nom (paper)", "default": "reproductibilité", "autoGenerateControl": true },
-    "p4Body":   { "type": "string", "label": "Pilier 4 body",        "default": "La méthode est-elle scriptable, twéakable, transmissible, répétable sur le même site avec d'autres briques de contenu ?", "autoGenerateControl": true }
+    "eyebrow": {
+      "type": "string",
+      "label": "Eyebrow violet",
+      "default": "// 01.piliers"
+    },
+    "title": {
+      "type": "string",
+      "label": "Titre H2 (avant break)",
+      "default": "4 piliers"
+    },
+    "titleEnd": {
+      "type": "string",
+      "label": "Titre H2 (après break)",
+      "default": "d'évaluation."
+    },
+    "lead": {
+      "type": "string",
+      "label": "Lead",
+      "default": "Quatre dimensions qui déterminent si une méthode tient sur la durée ou pas."
+    },
+    "p1Name": {
+      "type": "string",
+      "label": "Pilier 1 nom (acid)",
+      "default": "éditabilité native"
+    },
+    "p1Body": {
+      "type": "string",
+      "label": "Pilier 1 body",
+      "default": "La page reste-t-elle modifiable depuis l'éditeur Gutenberg WordPress sans expert qui réintervient, sans toucher au code ?"
+    },
+    "p2Name": {
+      "type": "string",
+      "label": "Pilier 2 nom (paper)",
+      "default": "qualité du design"
+    },
+    "p2Body": {
+      "type": "string",
+      "label": "Pilier 2 body",
+      "default": "Le rendu visuel final tient-il à hauteur d'un site professionnel ? Typo, hiérarchie, espaces graphiques, rigueur visuelle."
+    },
+    "p3Name": {
+      "type": "string",
+      "label": "Pilier 3 nom (violet)",
+      "default": "indépendance"
+    },
+    "p3Body": {
+      "type": "string",
+      "label": "Pilier 3 body",
+      "default": "Combien de plugins payants, de thèmes verrouillés ou de services tiers la méthode requiert pour fonctionner ?"
+    },
+    "p4Name": {
+      "type": "string",
+      "label": "Pilier 4 nom (paper)",
+      "default": "reproductibilité"
+    },
+    "p4Body": {
+      "type": "string",
+      "label": "Pilier 4 body",
+      "default": "La méthode est-elle scriptable, twéakable, transmissible, répétable sur le même site avec d'autres briques de contenu ?"
+    }
   },
   "render": "file:./render.php",
   "style": "wpf-lab-blocks-style"

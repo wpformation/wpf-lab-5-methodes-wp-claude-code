@@ -51,7 +51,7 @@ $wrapper_attrs = get_block_wrapper_attributes( array(
                 <div class="wpf-lab-why__ruler-top"><span>0</span><span>360</span><span>720</span><span>1080</span><span>1440</span></div>
                 <div class="wpf-lab-why__capture-frame">
                     <p class="wpf-lab-why__frame-caption">test.wpformation.com/methode-blocs-php-custom</p>
-                    <div class="wpf-lab-why__frame-overlay"><span>block.json · 11 attrs · autoGenerateControl</span></div>
+                    <div class="wpf-lab-why__frame-overlay"><span>block.json · 11 attrs · autoRegister</span></div>
                 </div>
                 <div class="wpf-lab-why__score">
                     <div class="wpf-lab-why__score-head">

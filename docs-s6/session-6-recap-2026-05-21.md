@@ -16,10 +16,10 @@
 
 ### Bloc B — Plugin wpf-lab v1.1.0 + page M·07 ✅
 - Plugin `wpf-lab/wpf-lab.php` étendu de 3 → **11 blocs PHP custom** : `lab-utility`, `lab-localnav`, `lab-banner`, `lab-hero`, `lab-stats`, `lab-why`, `lab-pillars`, `lab-feature-twocol`, `lab-methods-table`, `lab-team`, `lab-cta-final`
-- Pattern uniforme : `apiVersion 1` + `supports.autoRegister: true` + `autoGenerateControl: true` + `is_dynamic` + `render: "file:./render.php"`
+- Pattern uniforme : `apiVersion 1` + `supports.autoRegister: true` + `autoRegister: true` + `is_dynamic` + `render: "file:./render.php"`
 - `style.css` enrichi avec les classes `.wpf-lab-utility`, `.wpf-lab-localnav`, `.wpf-lab-banner`, `.wpf-lab-stats`, `.wpf-lab-why`, `.wpf-lab-pillars`, `.wpf-lab-methods`, `.wpf-lab-team`
 - Zip Unix-compatible via `make-zip-unix.js`, upload+activation via MCP `claudeus_wp_plugins__activate`
-- Page 262 reset : slug renommé `methode-blocs-php-custom`, titre `Méthode 7 · Blocs PHP custom (autoGenerateControl WP 7.0)`, content ultra-léger (~3 KB = 11 lignes de blocs custom + footer-lab-M7)
+- Page 262 reset : slug renommé `methode-blocs-php-custom`, titre `Méthode 7 · Blocs PHP custom (autoRegister WP 7.0)`, content ultra-léger (~3 KB = 11 lignes de blocs custom + footer-lab-M7)
 - URL : https://test.wpformation.com/methode-blocs-php-custom/
 
 ### Bloc C — HUB v3 (7 méthodes) ✅

@@ -6,16 +6,38 @@
   "description": "3 cartes équipe : Fabrice + Alexandra + Claude Code. Contenu figé. Direction B Lab.",
   "category": "widgets",
   "icon": "groups",
-  "keywords": ["lab", "team", "wpformation"],
+  "keywords": [
+    "lab",
+    "team",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
-    "eyebrow":   { "type": "string", "label": "Eyebrow", "default": "// 03.équipe · 3 contributeurs", "autoGenerateControl": true },
-    "titlePart1":{ "type": "string", "label": "Titre partie 1", "default": "qui a fait", "autoGenerateControl": true },
-    "titleAcid": { "type": "string", "label": "Titre mot acid", "default": "tourner", "autoGenerateControl": true },
-    "titlePart2":{ "type": "string", "label": "Titre partie 2", "default": "les tests.", "autoGenerateControl": true }
+    "eyebrow": {
+      "type": "string",
+      "label": "Eyebrow",
+      "default": "// 03.équipe · 3 contributeurs"
+    },
+    "titlePart1": {
+      "type": "string",
+      "label": "Titre partie 1",
+      "default": "qui a fait"
+    },
+    "titleAcid": {
+      "type": "string",
+      "label": "Titre mot acid",
+      "default": "tourner"
+    },
+    "titlePart2": {
+      "type": "string",
+      "label": "Titre partie 2",
+      "default": "les tests."
+    }
   },
   "render": "file:./render.php",
   "style": "wpf-lab-blocks-style"

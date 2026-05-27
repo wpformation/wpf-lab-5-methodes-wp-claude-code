@@ -6,53 +6,52 @@
   "description": "Barre utility haute (badges WPF/LAB + version + status + langue). Direction B Lab.",
   "category": "widgets",
   "icon": "menu-alt",
-  "keywords": ["lab", "utility", "wpformation"],
+  "keywords": [
+    "lab",
+    "utility",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
     "brandBadge": {
       "type": "string",
       "label": "Badge marque (inversé)",
-      "default": "WPF/LAB",
-      "autoGenerateControl": true
+      "default": "WPF/LAB"
     },
     "leftItem1": {
       "type": "string",
       "label": "Item gauche 1",
-      "default": "● VERSION 2026.05",
-      "autoGenerateControl": true
+      "default": "● VERSION 2026.05"
     },
     "leftItem2": {
       "type": "string",
       "label": "Item gauche 2",
-      "default": "★ CLAUDE-CODE BENCHMARK",
-      "autoGenerateControl": true
+      "default": "★ CLAUDE-CODE BENCHMARK"
     },
     "leftItem3": {
       "type": "string",
       "label": "Item gauche 3",
-      "default": "↻ MAJ MERCREDI",
-      "autoGenerateControl": true
+      "default": "↻ MAJ MERCREDI"
     },
     "rightItem1": {
       "type": "string",
       "label": "Item droite 1",
-      "default": "SHIPS · ARTICLE → WPFORMATION.COM",
-      "autoGenerateControl": true
+      "default": "SHIPS · ARTICLE → WPFORMATION.COM"
     },
     "rightItem2": {
       "type": "string",
       "label": "Item droite 2",
-      "default": "SCORE FINAL · 5/5",
-      "autoGenerateControl": true
+      "default": "SCORE FINAL · 5/5"
     },
     "rightItem3": {
       "type": "string",
       "label": "Item droite 3 (langue)",
-      "default": "fr_FR",
-      "autoGenerateControl": true
+      "default": "fr_FR"
     }
   },
   "render": "file:./render.php",

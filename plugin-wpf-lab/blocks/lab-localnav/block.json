@@ -6,59 +6,57 @@
   "description": "Nav locale (logo + 5 entrées + CTA). Direction B Lab.",
   "category": "widgets",
   "icon": "menu",
-  "keywords": ["lab", "nav", "wpformation"],
+  "keywords": [
+    "lab",
+    "nav",
+    "wpformation"
+  ],
   "supports": {
     "autoRegister": true,
-    "align": ["full"]
+    "align": [
+      "full"
+    ]
   },
   "attributes": {
     "brand": {
       "type": "string",
       "label": "Brand (gauche, ex: wpformation/lab)",
-      "default": "wpformation/lab",
-      "autoGenerateControl": true
+      "default": "wpformation/lab"
     },
     "link1": {
       "type": "string",
       "label": "Lien 1",
-      "default": "00 · intro",
-      "autoGenerateControl": true
+      "default": "00 · intro"
     },
     "link2": {
       "type": "string",
       "label": "Lien 2",
-      "default": "01 · piliers",
-      "autoGenerateControl": true
+      "default": "01 · piliers"
     },
     "link3": {
       "type": "string",
       "label": "Lien 3",
-      "default": "02 · les 7 méthodes",
-      "autoGenerateControl": true
+      "default": "02 · les 7 méthodes"
     },
     "link4": {
       "type": "string",
       "label": "Lien 4",
-      "default": "03 · équipe",
-      "autoGenerateControl": true
+      "default": "03 · équipe"
     },
     "link5": {
       "type": "string",
       "label": "Lien 5",
-      "default": "04 · verdict",
-      "autoGenerateControl": true
+      "default": "04 · verdict"
     },
     "ctaLabel": {
       "type": "string",
       "label": "CTA droite",
-      "default": "★ LIRE L'ARTICLE",
-      "autoGenerateControl": true
+      "default": "★ LIRE L'ARTICLE"
     },
     "ctaUrl": {
       "type": "string",
       "label": "CTA URL",
-      "default": "https://wpformation.com",
-      "autoGenerateControl": true
+      "default": "https://wpformation.com"
     }
   },
   "render": "file:./render.php",
